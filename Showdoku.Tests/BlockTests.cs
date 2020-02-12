@@ -1,0 +1,178 @@
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Showdoku
+{
+	[TestClass]
+	public class BlockTests
+	{
+		[TestMethod]
+		public void All_blocks_should_have_2_dimensions()
+		{
+			// Arrange
+			// Act
+			Grid grid = new Grid();
+
+			// Assert
+			foreach (Block block in grid.Blocks)
+			{
+				block.Cells.Rank.Should().Be(2);
+			}
+		}
+
+		[TestMethod]
+		public void All_blocks_should_contain_3_by_3_cells()
+		{
+			// Arrange
+			// Act
+			Grid grid = new Grid();
+
+			// Assert
+			foreach (Block block in grid.Blocks)
+			{
+				block.Cells.GetLength(0).Should().Be(3);
+				block.Cells.GetLength(1).Should().Be(3);
+			}
+		}
+
+		[TestMethod]
+		public void All_blocks_should_contain_expected_cells()
+		{
+			// Arrange
+			// Act
+			Grid grid = new Grid();
+
+			// Assert
+			grid.Blocks[0, 0].Cells[0, 0].Should().Be(grid.Cells[0, 0]);
+			grid.Blocks[0, 0].Cells[1, 0].Should().Be(grid.Cells[1, 0]);
+			grid.Blocks[0, 0].Cells[2, 0].Should().Be(grid.Cells[2, 0]);
+			grid.Blocks[0, 0].Cells[0, 1].Should().Be(grid.Cells[0, 1]);
+			grid.Blocks[0, 0].Cells[1, 1].Should().Be(grid.Cells[1, 1]);
+			grid.Blocks[0, 0].Cells[2, 1].Should().Be(grid.Cells[2, 1]);
+			grid.Blocks[0, 0].Cells[0, 2].Should().Be(grid.Cells[0, 2]);
+			grid.Blocks[0, 0].Cells[1, 2].Should().Be(grid.Cells[1, 2]);
+			grid.Blocks[0, 0].Cells[2, 2].Should().Be(grid.Cells[2, 2]);
+
+			grid.Blocks[1, 0].Cells[0, 0].Should().Be(grid.Cells[3, 0]);
+			grid.Blocks[1, 0].Cells[1, 0].Should().Be(grid.Cells[4, 0]);
+			grid.Blocks[1, 0].Cells[2, 0].Should().Be(grid.Cells[5, 0]);
+			grid.Blocks[1, 0].Cells[0, 1].Should().Be(grid.Cells[3, 1]);
+			grid.Blocks[1, 0].Cells[1, 1].Should().Be(grid.Cells[4, 1]);
+			grid.Blocks[1, 0].Cells[2, 1].Should().Be(grid.Cells[5, 1]);
+			grid.Blocks[1, 0].Cells[0, 2].Should().Be(grid.Cells[3, 2]);
+			grid.Blocks[1, 0].Cells[1, 2].Should().Be(grid.Cells[4, 2]);
+			grid.Blocks[1, 0].Cells[2, 2].Should().Be(grid.Cells[5, 2]);
+
+			grid.Blocks[2, 0].Cells[0, 0].Should().Be(grid.Cells[6, 0]);
+			grid.Blocks[2, 0].Cells[1, 0].Should().Be(grid.Cells[7, 0]);
+			grid.Blocks[2, 0].Cells[2, 0].Should().Be(grid.Cells[8, 0]);
+			grid.Blocks[2, 0].Cells[0, 1].Should().Be(grid.Cells[6, 1]);
+			grid.Blocks[2, 0].Cells[1, 1].Should().Be(grid.Cells[7, 1]);
+			grid.Blocks[2, 0].Cells[2, 1].Should().Be(grid.Cells[8, 1]);
+			grid.Blocks[2, 0].Cells[0, 2].Should().Be(grid.Cells[6, 2]);
+			grid.Blocks[2, 0].Cells[1, 2].Should().Be(grid.Cells[7, 2]);
+			grid.Blocks[2, 0].Cells[2, 2].Should().Be(grid.Cells[8, 2]);
+
+			grid.Blocks[0, 1].Cells[0, 0].Should().Be(grid.Cells[0, 3]);
+			grid.Blocks[0, 1].Cells[1, 0].Should().Be(grid.Cells[1, 3]);
+			grid.Blocks[0, 1].Cells[2, 0].Should().Be(grid.Cells[2, 3]);
+			grid.Blocks[0, 1].Cells[0, 1].Should().Be(grid.Cells[0, 4]);
+			grid.Blocks[0, 1].Cells[1, 1].Should().Be(grid.Cells[1, 4]);
+			grid.Blocks[0, 1].Cells[2, 1].Should().Be(grid.Cells[2, 4]);
+			grid.Blocks[0, 1].Cells[0, 2].Should().Be(grid.Cells[0, 5]);
+			grid.Blocks[0, 1].Cells[1, 2].Should().Be(grid.Cells[1, 5]);
+			grid.Blocks[0, 1].Cells[2, 2].Should().Be(grid.Cells[2, 5]);
+
+			grid.Blocks[1, 1].Cells[0, 0].Should().Be(grid.Cells[3, 3]);
+			grid.Blocks[1, 1].Cells[1, 0].Should().Be(grid.Cells[4, 3]);
+			grid.Blocks[1, 1].Cells[2, 0].Should().Be(grid.Cells[5, 3]);
+			grid.Blocks[1, 1].Cells[0, 1].Should().Be(grid.Cells[3, 4]);
+			grid.Blocks[1, 1].Cells[1, 1].Should().Be(grid.Cells[4, 4]);
+			grid.Blocks[1, 1].Cells[2, 1].Should().Be(grid.Cells[5, 4]);
+			grid.Blocks[1, 1].Cells[0, 2].Should().Be(grid.Cells[3, 5]);
+			grid.Blocks[1, 1].Cells[1, 2].Should().Be(grid.Cells[4, 5]);
+			grid.Blocks[1, 1].Cells[2, 2].Should().Be(grid.Cells[5, 5]);
+
+			grid.Blocks[2, 1].Cells[0, 0].Should().Be(grid.Cells[6, 3]);
+			grid.Blocks[2, 1].Cells[1, 0].Should().Be(grid.Cells[7, 3]);
+			grid.Blocks[2, 1].Cells[2, 0].Should().Be(grid.Cells[8, 3]);
+			grid.Blocks[2, 1].Cells[0, 1].Should().Be(grid.Cells[6, 4]);
+			grid.Blocks[2, 1].Cells[1, 1].Should().Be(grid.Cells[7, 4]);
+			grid.Blocks[2, 1].Cells[2, 1].Should().Be(grid.Cells[8, 4]);
+			grid.Blocks[2, 1].Cells[0, 2].Should().Be(grid.Cells[6, 5]);
+			grid.Blocks[2, 1].Cells[1, 2].Should().Be(grid.Cells[7, 5]);
+			grid.Blocks[2, 1].Cells[2, 2].Should().Be(grid.Cells[8, 5]);
+
+			grid.Blocks[0, 2].Cells[0, 0].Should().Be(grid.Cells[0, 6]);
+			grid.Blocks[0, 2].Cells[1, 0].Should().Be(grid.Cells[1, 6]);
+			grid.Blocks[0, 2].Cells[2, 0].Should().Be(grid.Cells[2, 6]);
+			grid.Blocks[0, 2].Cells[0, 1].Should().Be(grid.Cells[0, 7]);
+			grid.Blocks[0, 2].Cells[1, 1].Should().Be(grid.Cells[1, 7]);
+			grid.Blocks[0, 2].Cells[2, 1].Should().Be(grid.Cells[2, 7]);
+			grid.Blocks[0, 2].Cells[0, 2].Should().Be(grid.Cells[0, 8]);
+			grid.Blocks[0, 2].Cells[1, 2].Should().Be(grid.Cells[1, 8]);
+			grid.Blocks[0, 2].Cells[2, 2].Should().Be(grid.Cells[2, 8]);
+
+			grid.Blocks[1, 2].Cells[0, 0].Should().Be(grid.Cells[3, 6]);
+			grid.Blocks[1, 2].Cells[1, 0].Should().Be(grid.Cells[4, 6]);
+			grid.Blocks[1, 2].Cells[2, 0].Should().Be(grid.Cells[5, 6]);
+			grid.Blocks[1, 2].Cells[0, 1].Should().Be(grid.Cells[3, 7]);
+			grid.Blocks[1, 2].Cells[1, 1].Should().Be(grid.Cells[4, 7]);
+			grid.Blocks[1, 2].Cells[2, 1].Should().Be(grid.Cells[5, 7]);
+			grid.Blocks[1, 2].Cells[0, 2].Should().Be(grid.Cells[3, 8]);
+			grid.Blocks[1, 2].Cells[1, 2].Should().Be(grid.Cells[4, 8]);
+			grid.Blocks[1, 2].Cells[2, 2].Should().Be(grid.Cells[5, 8]);
+
+			grid.Blocks[2, 2].Cells[0, 0].Should().Be(grid.Cells[6, 6]);
+			grid.Blocks[2, 2].Cells[1, 0].Should().Be(grid.Cells[7, 6]);
+			grid.Blocks[2, 2].Cells[2, 0].Should().Be(grid.Cells[8, 6]);
+			grid.Blocks[2, 2].Cells[0, 1].Should().Be(grid.Cells[6, 7]);
+			grid.Blocks[2, 2].Cells[1, 1].Should().Be(grid.Cells[7, 7]);
+			grid.Blocks[2, 2].Cells[2, 1].Should().Be(grid.Cells[8, 7]);
+			grid.Blocks[2, 2].Cells[0, 2].Should().Be(grid.Cells[6, 8]);
+			grid.Blocks[2, 2].Cells[1, 2].Should().Be(grid.Cells[7, 8]);
+			grid.Blocks[2, 2].Cells[2, 2].Should().Be(grid.Cells[8, 8]);
+		}
+
+		[TestMethod]
+		public void A_block_containing_only_solved_cells_should_be_classed_as_solved()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			grid.SolveCell(0, 0, 1);
+			grid.SolveCell(1, 0, 2);
+			grid.SolveCell(2, 0, 3);
+			grid.SolveCell(0, 1, 4);
+			grid.SolveCell(1, 1, 5);
+			grid.SolveCell(2, 1, 6);
+			grid.SolveCell(0, 2, 7);
+			grid.SolveCell(1, 2, 8);
+			grid.SolveCell(2, 2, 9);
+
+			// Assert
+			grid.Blocks[0, 0].IsSolved().Should().BeTrue();
+		}
+
+		[TestMethod]
+		public void A_block_containing_any_unsolved_cells_should_be_classed_as_unsolved()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			grid.SolveCell(0, 0, 1);
+			grid.SolveCell(1, 0, 2);
+			grid.SolveCell(2, 0, 3);
+			grid.SolveCell(0, 1, 4);
+			grid.SolveCell(1, 1, 5);
+			grid.SolveCell(2, 1, 6);
+			grid.SolveCell(0, 2, 7);
+			grid.SolveCell(1, 2, 8);
+
+			// Assert
+			grid.Blocks[0, 0].IsSolved().Should().BeFalse();
+		}
+	}
+}
