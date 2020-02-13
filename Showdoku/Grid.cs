@@ -166,9 +166,9 @@ namespace Showdoku
 		{
 			foreach (Cell blockCell in this.GetBlockContainingCell(toSolve).Cells)
 			{
-				if (blockCell.IsSolved() && blockCell.Solution.Value == number)
+				if (blockCell != toSolve && blockCell.IsSolved() && blockCell.Solution.Value == number)
 				{
-					return true;	
+					return true;
 				}
 			}
 
@@ -179,7 +179,7 @@ namespace Showdoku
 		{
 			foreach (Cell rowCell in this.GetRowContainingCell(toSolve).Cells)
 			{
-				if (rowCell.IsSolved() && rowCell.Solution.Value == number)
+				if (rowCell != toSolve && rowCell.IsSolved() && rowCell.Solution.Value == number)
 				{
 					return true;
 				}
@@ -192,7 +192,7 @@ namespace Showdoku
 		{
 			foreach (Cell columnCell in this.GetColumnContainingCell(toSolve).Cells)
 			{
-				if (columnCell.IsSolved() && columnCell.Solution.Value == number)
+				if (columnCell != toSolve && columnCell.IsSolved() && columnCell.Solution.Value == number)
 				{
 					return true;
 				}

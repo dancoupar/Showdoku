@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using Showdoku.SolvingTechniques;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Showdoku
 	public class SolverTests
 	{
 		[TestMethod]
-		public void Test()
+		public void Should_be_able_to_solve_medium_grid_b()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -20,10 +21,25 @@ namespace Showdoku
 				}
 			);
 
-			Grid grid = new GridBuilder().WithHardGrid_A();
+			Grid grid = new GridBuilder().WithMediumGrid_B();
 
 			// Act
-			solver.TrySolve(grid, out string report);
+			bool result = solver.TrySolve(grid, out string report);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		private void AssertSolutionIsValid(Grid grid)
+		{
+			for (int x = 0; x < 9; x++)
+			{
+				for (int y = 0; y < 9; y++)
+				{
+					grid.IsCellSolutionValid(x, y, grid.Cells[x, y].Solution.Value).Should().BeTrue();
+				}
+			}
 		}
 	}
 }

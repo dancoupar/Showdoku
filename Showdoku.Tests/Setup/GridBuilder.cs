@@ -222,6 +222,47 @@
 			return this;
 		}
 
+		public GridBuilder WithMediumGrid_B()
+		{
+			foreach (Cell cell in grid.Cells)
+			{
+				cell.Empty();
+			}
+
+			grid.SolveCell(1, 0, 8);
+			grid.SolveCell(7, 0, 7);
+			grid.SolveCell(8, 0, 2);
+			grid.SolveCell(0, 1, 2);
+			grid.SolveCell(1, 1, 5);
+			grid.SolveCell(5, 1, 4);
+			grid.SolveCell(8, 1, 1);
+			grid.SolveCell(1, 2, 1);
+			grid.SolveCell(6, 2, 5);
+			grid.SolveCell(7, 2, 4);
+			grid.SolveCell(8, 2, 9);
+			grid.SolveCell(0, 3, 5);
+			grid.SolveCell(2, 3, 1);
+			grid.SolveCell(3, 3, 3);
+			grid.SolveCell(5, 3, 7);
+			grid.SolveCell(1, 4, 7);
+			grid.SolveCell(7, 4, 1);
+			grid.SolveCell(8, 4, 5);
+			grid.SolveCell(0, 5, 4);
+			grid.SolveCell(1, 5, 2);
+			grid.SolveCell(3, 5, 1);
+			grid.SolveCell(5, 5, 8);
+			grid.SolveCell(7, 6, 9);
+			grid.SolveCell(8, 6, 6);
+			grid.SolveCell(4, 7, 6);
+			grid.SolveCell(5, 7, 9);
+			grid.SolveCell(8, 7, 7);
+			grid.SolveCell(0, 8, 1);
+			grid.SolveCell(6, 8, 2);
+			grid.SolveCell(7, 8, 8);
+
+			return this;
+		}
+
 		public GridBuilder WithHardGrid_A()
 		{
 			foreach (Cell cell in grid.Cells)
