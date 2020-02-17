@@ -48,7 +48,7 @@ namespace Showdoku.SolvingTechniques
 				if (this.IsOnlyCellWithPencilMark(cell, containingBlock, pencilMark))
 				{
 					// If so, we can solve it
-					grid.SolveCell(cell, pencilMark);
+					cell.Solve(pencilMark);
 					return true;
 				}
 
@@ -56,7 +56,7 @@ namespace Showdoku.SolvingTechniques
 				if (this.IsOnlyCellWithPencilMark(cell, containingRow, pencilMark))
 				{
 					// If so, we can solve it
-					grid.SolveCell(cell, pencilMark);
+					cell.Solve(pencilMark);
 					return true;
 				}
 
@@ -64,7 +64,7 @@ namespace Showdoku.SolvingTechniques
 				if (this.IsOnlyCellWithPencilMark(cell, containingColumn, pencilMark))
 				{
 					// If so, we can solve it
-					grid.SolveCell(cell, pencilMark);
+					cell.Solve(pencilMark);
 					return true;
 				}
 			}

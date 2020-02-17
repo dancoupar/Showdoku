@@ -100,10 +100,10 @@ namespace Showdoku
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.SolveCell(0, 0, 1);
+			grid.Cells[0, 0].Solve(1);
 
 			// Act
-			bool result = grid.IsCellSolutionValid(1, 1, 1);
+			bool result = grid.Cells[1, 1].IsSolutionValid(1);
 
 			// Assert
 			result.Should().BeFalse();
@@ -114,10 +114,10 @@ namespace Showdoku
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.SolveCell(0, 0, 1);
+			grid.Cells[0, 0].Solve(1);
 
 			// Act
-			bool result = grid.IsCellSolutionValid(0, 8, 1);
+			bool result = grid.Cells[0, 8].IsSolutionValid(1);
 
 			// Assert
 			result.Should().BeFalse();
@@ -128,10 +128,10 @@ namespace Showdoku
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.SolveCell(0, 0, 1);
+			grid.Cells[0, 0].Solve(1);
 
 			// Act
-			bool result = grid.IsCellSolutionValid(8, 0, 1);
+			bool result = grid.Cells[8, 0].IsSolutionValid(1);
 
 			// Assert
 			result.Should().BeFalse();
@@ -144,7 +144,7 @@ namespace Showdoku
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
 			// Act
-			bool result = grid.IsCellSolutionValid(0, 0, 0);
+			bool result = grid.Cells[0, 0].IsSolutionValid(0);
 
 			// Assert
 			result.Should().BeFalse();
@@ -157,74 +157,10 @@ namespace Showdoku
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
 			// Act
-			bool result = grid.IsCellSolutionValid(0, 0, 10);
+			bool result = grid.Cells[0, 0].IsSolutionValid(10);
 
 			// Assert
 			result.Should().BeFalse();
-		}
-
-		[TestMethod]
-		public void Checking_whether_a_cell_solution_is_valid_should_throw_if_the_x_index_is_less_than_0()
-		{
-			// Arrange
-			Grid grid = new GridBuilder().WithEmptyGrid();
-
-			// Act
-			Action act = () =>
-			{
-				grid.IsCellSolutionValid(-1, 0, 0);
-			};
-
-			// Assert
-			act.Should().Throw<IndexOutOfRangeException>();
-		}
-
-		[TestMethod]
-		public void Checking_whether_a_cell_solution_is_valid_should_throw_if_the_x_index_is_more_than_8()
-		{
-			// Arrange
-			Grid grid = new GridBuilder().WithEmptyGrid();
-
-			// Act
-			Action act = () =>
-			{
-				grid.IsCellSolutionValid(9, 0, 0);
-			};
-
-			// Assert
-			act.Should().Throw<IndexOutOfRangeException>();
-		}
-
-		[TestMethod]
-		public void Checking_whether_a_cell_solution_is_valid_should_throw_if_the_y_index_is_less_than_0()
-		{
-			// Arrange
-			Grid grid = new GridBuilder().WithEmptyGrid();
-
-			// Act
-			Action act = () =>
-			{
-				grid.IsCellSolutionValid(0, -1, 0);
-			};
-
-			// Assert
-			act.Should().Throw<IndexOutOfRangeException>();
-		}
-
-		[TestMethod]
-		public void Checking_whether_a_cell_solution_is_valid_should_throw_if_the_y_index_is_more_than_8()
-		{
-			// Arrange
-			Grid grid = new GridBuilder().WithEmptyGrid();
-
-			// Act
-			Action act = () =>
-			{
-				grid.IsCellSolutionValid(0, 9, 0);
-			};
-
-			// Assert
-			act.Should().Throw<IndexOutOfRangeException>();
 		}
 
 		[TestMethod]
@@ -239,7 +175,7 @@ namespace Showdoku
 			grid.Cells[0, 0].Empty();
 
 			// Act
-			bool result = grid.IsCellSolutionValid(0, 0, cellValue);
+			bool result = grid.Cells[0, 0].IsSolutionValid(cellValue);
 
 			// Assert
 			result.Should().BeTrue();
@@ -252,11 +188,11 @@ namespace Showdoku
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
 			// Act
-			grid.SolveCell(0, 0, 4);
+			grid.Cells[0, 0].Solve(4);
 
 			Action act = () =>
 			{
-				grid.SolveCell(1, 1, 4);
+				grid.Cells[1, 1].Solve(4);
 			};
 
 			// Assert
@@ -270,11 +206,11 @@ namespace Showdoku
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
 			// Act
-			grid.SolveCell(0, 0, 5);
+			grid.Cells[0, 0].Solve(5);
 
 			Action act = () =>
 			{
-				grid.SolveCell(1, 0, 5);
+				grid.Cells[1, 0].Solve(5);
 			};
 
 			// Assert
@@ -288,11 +224,11 @@ namespace Showdoku
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
 			// Act
-			grid.SolveCell(0, 0, 6);
+			grid.Cells[0, 0].Solve(6);
 
 			Action act = () =>
 			{
-				grid.SolveCell(0, 1, 6);
+				grid.Cells[0, 1].Solve(6);
 			};
 
 			// Assert

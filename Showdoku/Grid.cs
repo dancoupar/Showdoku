@@ -20,7 +20,7 @@ namespace Showdoku
 			{
 				for (int x = 0; x < 9; x++)
 				{
-					this.Cells[x, y] = new Cell();
+					this.Cells[x, y] = new Cell(this);
 				}
 			}
 
@@ -87,122 +87,46 @@ namespace Showdoku
 			get;
 		}
 
-		public void SolveCell(int x, int y, int solution)
-		{
-			Cell toSolve = this.Cells[x, y];
-			this.SolveCell(toSolve, solution);
-		}
-
-		public void SolveCell(Cell toSolve, int solution)
-		{
-			if (toSolve == null)
-			{
-				throw new ArgumentNullException(nameof(toSolve), "Argument cannot be null.");
-			}
-
-			// TODO: Implement IEnumerable and validate cell exists in grid
-
-			if (toSolve.IsSolved())
-			{
-				throw new AlreadySolvedException("This cell has already been solved.");
-			}
-
-			if (this.IsNumberAlreadyInBlock(toSolve, solution))
-			{
-				throw new InvalidSolutionException($"The block containing this cell already contains a cell with a solution of {solution}.", solution);
-			}
-
-			if (this.IsNumberAlreadyInRow(toSolve, solution))
-			{
-				throw new InvalidSolutionException($"The row containing this cell already contains a cell with a solution of {solution}.", solution);
-			}
-
-			if (this.IsNumberAlreadyInColumn(toSolve, solution))
-			{
-				throw new InvalidSolutionException($"The column containing this cell already contains a cell with a solution of {solution}.", solution);
-			}
-
-			toSolve.Solve(solution);
-		}
-
+		/// <summary>
+		/// Gets a value indicating whether the grid has been successfully solved.
+		/// </summary>
+		/// <returns>
+		/// True if the grid is solved, otherwise false.
+		/// </returns>
 		public bool IsSolved()
 		{
 			return this.All((c) => c.IsSolved());
 		}
 
+		/// <summary>
+		/// Gets the total number of cells within the grid that have been solved.
+		/// </summary>
+		/// <returns>
+		/// The total number of solved cells.
+		/// </returns>
 		public int GetSolvedCellCount()
 		{
 			return this.Count((c) => c.IsSolved());
 		}
 
-		public bool IsCellSolutionValid(int x, int y, int solution)
-		{
-			Cell toSolve = this.Cells[x, y];
-
-			if (solution < 1 || solution > 9)
-			{
-				return false;
-			}
-
-			if (this.IsNumberAlreadyInBlock(toSolve, solution))
-			{
-				return false;
-			}
-			
-			if (this.IsNumberAlreadyInRow(toSolve, solution))
-			{
-				return false;
-			}			
-
-			if (this.IsNumberAlreadyInColumn(toSolve, solution))
-			{
-				return false;
-			}
-
-			return true;
-		}
-
-		private bool IsNumberAlreadyInBlock(Cell toSolve, int number)
-		{
-			foreach (Cell blockCell in this.GetBlockContainingCell(toSolve).Cells)
-			{
-				if (blockCell != toSolve && blockCell.IsSolved() && blockCell.Solution.Value == number)
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		private bool IsNumberAlreadyInRow(Cell toSolve, int number)
-		{
-			foreach (Cell rowCell in this.GetRowContainingCell(toSolve).Cells)
-			{
-				if (rowCell != toSolve && rowCell.IsSolved() && rowCell.Solution.Value == number)
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		private bool IsNumberAlreadyInColumn(Cell toSolve, int number)
-		{
-			foreach (Cell columnCell in this.GetColumnContainingCell(toSolve).Cells)
-			{
-				if (columnCell != toSolve && columnCell.IsSolved() && columnCell.Solution.Value == number)
-				{
-					return true;
-				}
-			}
-
-			return false;
-		}
-
+		/// <summary>
+		/// Gets the block which contains the specified cell.
+		/// </summary>
+		/// <param name="cell">
+		/// The cell whose encompassing block is to be retrieved.
+		/// </param>
+		/// <returns>
+		/// The block which contains the cell.
+		/// </returns>
+		/// <exception cref="ArgumentNullException"></exception>
+		/// <exception cref="CellNotFoundException"></exception>
 		public Block GetBlockContainingCell(Cell cell)
 		{
+			if (cell == null)
+			{
+				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
+			}
+
 			foreach (Block block in this.Blocks)
 			{
 				if (block.Contains(cell))
@@ -214,8 +138,24 @@ namespace Showdoku
 			throw new CellNotFoundException("The specified cell is not contained in any block.");
 		}
 
+		/// <summary>
+		/// Gets the row which contains the specified cell.
+		/// </summary>
+		/// <param name="cell">
+		/// The cell whose encompassing row is to be retrieved.
+		/// </param>
+		/// <returns>
+		/// The row which contains the cell.
+		/// </returns>
+		/// <exception cref="ArgumentNullException"></exception>
+		/// <exception cref="CellNotFoundException"></exception>
 		public Row GetRowContainingCell(Cell cell)
 		{
+			if (cell == null)
+			{
+				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
+			}
+
 			Row row = this.Rows.SingleOrDefault((r) => r.Contains(cell));
 
 			if (row == null)
@@ -226,8 +166,24 @@ namespace Showdoku
 			return row;
 		}
 
+		/// <summary>
+		/// Gets the column which contains the specified cell.
+		/// </summary>
+		/// <param name="cell">
+		/// The cell whose encompassing column is to be retrieved.
+		/// </param>
+		/// <returns>
+		/// The column which contains the cell.
+		/// </returns>
+		/// <exception cref="ArgumentNullException"></exception>
+		/// <exception cref="CellNotFoundException"></exception>
 		public Column GetColumnContainingCell(Cell cell)
 		{
+			if (cell == null)
+			{
+				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
+			}
+
 			Column column = this.Columns.SingleOrDefault((r) => r.Contains(cell));
 
 			if (column == null)
@@ -238,6 +194,9 @@ namespace Showdoku
 			return column;
 		}
 
+		/// <summary>
+		/// Returns a string representation of the grid in its current state.
+		/// </summary>
 		public override string ToString()
 		{
 			StringBuilder builder = new StringBuilder();

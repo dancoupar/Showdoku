@@ -126,15 +126,15 @@ namespace Showdoku
 			Grid grid = new Grid();
 
 			// Act
-			grid.SolveCell(0, 0, 1);
-			grid.SolveCell(1, 0, 2);
-			grid.SolveCell(2, 0, 3);
-			grid.SolveCell(3, 0, 4);
-			grid.SolveCell(4, 0, 5);
-			grid.SolveCell(5, 0, 6);
-			grid.SolveCell(6, 0, 7);
-			grid.SolveCell(7, 0, 8);
-			grid.SolveCell(8, 0, 9);
+			grid.Cells[0, 0].Solve(1);
+			grid.Cells[1, 0].Solve(2);
+			grid.Cells[2, 0].Solve(3);
+			grid.Cells[3, 0].Solve(4);
+			grid.Cells[4, 0].Solve(5);
+			grid.Cells[5, 0].Solve(6);
+			grid.Cells[6, 0].Solve(7);
+			grid.Cells[7, 0].Solve(8);
+			grid.Cells[8, 0].Solve(9);
 
 			// Assert
 			grid.Rows[0].IsSolved().Should().BeTrue();
@@ -147,14 +147,14 @@ namespace Showdoku
 			Grid grid = new Grid();
 
 			// Act
-			grid.SolveCell(0, 0, 1);
-			grid.SolveCell(1, 0, 2);
-			grid.SolveCell(2, 0, 3);
-			grid.SolveCell(3, 0, 4);
-			grid.SolveCell(4, 0, 5);
-			grid.SolveCell(5, 0, 6);
-			grid.SolveCell(6, 0, 7);
-			grid.SolveCell(7, 0, 8);
+			grid.Cells[0, 0].Solve(1);
+			grid.Cells[1, 0].Solve(2);
+			grid.Cells[2, 0].Solve(3);
+			grid.Cells[3, 0].Solve(4);
+			grid.Cells[4, 0].Solve(5);
+			grid.Cells[5, 0].Solve(6);
+			grid.Cells[6, 0].Solve(7);
+			grid.Cells[7, 0].Solve(8);
 			
 			// Assert
 			grid.Rows[0].IsSolved().Should().BeFalse();

@@ -37,7 +37,7 @@ namespace Showdoku
 			{
 				for (int y = 0; y < 9; y++)
 				{
-					grid.IsCellSolutionValid(x, y, grid.Cells[x, y].Solution.Value).Should().BeTrue();
+					grid.Cells[x, y].IsSolutionValid(grid.Cells[x, y].Solution.Value).Should().BeTrue();
 				}
 			}
 		}
