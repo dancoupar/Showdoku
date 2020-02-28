@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Showdoku.Exceptions
+namespace Showdoku
 {
 	/// <summary>
 	/// The exception thrown if a cell cannot be found.
