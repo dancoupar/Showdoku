@@ -1,14 +1,19 @@
 ﻿using Showdoku.Exceptions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Showdoku
 {
-	public class Grid : ICellContainer
+	/// <summary>
+	/// A soduko grid containing 9 blocks, 9 rows and 9 columns of 9 cells.
+	/// </summary>
+	public class Grid : CellCollection
 	{
+		/// <summary>
+		/// Creates a new, empty sudoku grid.
+		/// </summary>
 		public Grid()
 		{
 			this.Cells = new Cell[9, 9];
@@ -67,46 +72,36 @@ namespace Showdoku
 			}
 		}
 
+		/// <summary>
+		/// Gets a 9 by 9 array of all the cells in this grid.
+		/// </summary>
 		public Cell[,] Cells
 		{
 			get;
 		}
 
+		/// <summary>
+		/// Gets a 3 by 3 array of all the blocks in this grid.
+		/// </summary>
 		public Block[,] Blocks
 		{
 			get;
 		}
 
+		/// <summary>
+		/// Gets an array of all 9 rows in this grid. Rows run from left to right.
+		/// </summary>
 		public Row[] Rows
 		{
 			get;
 		}
 
+		/// <summary>
+		/// Gets an array of all 9 columns in this grid. Columns run from top to bottom.
+		/// </summary>
 		public Column[] Columns
 		{
 			get;
-		}
-
-		/// <summary>
-		/// Gets a value indicating whether the grid has been successfully solved.
-		/// </summary>
-		/// <returns>
-		/// True if the grid is solved, otherwise false.
-		/// </returns>
-		public bool IsSolved()
-		{
-			return this.All((c) => c.IsSolved());
-		}
-
-		/// <summary>
-		/// Gets the total number of cells within the grid that have been solved.
-		/// </summary>
-		/// <returns>
-		/// The total number of solved cells.
-		/// </returns>
-		public int GetSolvedCellCount()
-		{
-			return this.Count((c) => c.IsSolved());
 		}
 
 		/// <summary>
@@ -118,8 +113,12 @@ namespace Showdoku
 		/// <returns>
 		/// The block which contains the cell.
 		/// </returns>
-		/// <exception cref="ArgumentNullException"></exception>
-		/// <exception cref="CellNotFoundException"></exception>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified cell is null.
+		/// </exception>
+		/// <exception cref="CellNotFoundException">
+		/// Thrown if the specified cell is not contained within any block.
+		/// </exception>
 		public Block GetBlockContainingCell(Cell cell)
 		{
 			if (cell == null)
@@ -147,8 +146,12 @@ namespace Showdoku
 		/// <returns>
 		/// The row which contains the cell.
 		/// </returns>
-		/// <exception cref="ArgumentNullException"></exception>
-		/// <exception cref="CellNotFoundException"></exception>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified cell is null.
+		/// </exception>
+		/// <exception cref="CellNotFoundException">
+		/// Thrown if the specified cell is not contained within any row.
+		/// </exception>
 		public Row GetRowContainingCell(Cell cell)
 		{
 			if (cell == null)
@@ -175,8 +178,12 @@ namespace Showdoku
 		/// <returns>
 		/// The column which contains the cell.
 		/// </returns>
-		/// <exception cref="ArgumentNullException"></exception>
-		/// <exception cref="CellNotFoundException"></exception>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified cell is null.
+		/// </exception>
+		/// <exception cref="CellNotFoundException">
+		/// Thrown if the specified cell is not contained within any column.
+		/// </exception>
 		public Column GetColumnContainingCell(Cell cell)
 		{
 			if (cell == null)
@@ -192,10 +199,27 @@ namespace Showdoku
 			}
 
 			return column;
+		}		
+
+		/// <summary>
+		/// Returns an enumerator that iterates through each of the cells within this grid.
+		/// </summary>
+		/// <returns>
+		/// An enumerator that can be used to iterate through the cells within this grid.
+		/// </returns>
+		public override IEnumerator<Cell> GetEnumerator()
+		{
+			for (int x = 0; x < 9; x++)
+			{
+				for (int y = 0; y < 9; y++)
+				{
+					yield return this.Cells[x, y];
+				}
+			}
 		}
 
 		/// <summary>
-		/// Returns a string representation of the grid in its current state.
+		/// Returns a string representation of the grid.
 		/// </summary>
 		public override string ToString()
 		{
@@ -233,33 +257,6 @@ namespace Showdoku
 			builder.AppendLine("———————————————————————————————");
 
 			return builder.ToString();
-		}
-
-		public IEnumerator<Cell> GetEnumerator()
-		{
-			for (int x = 0; x < 9; x++)
-			{
-				for (int y = 0; y < 9; y++)
-				{
-					yield return this.Cells[x, y];
-				}
-			}
-		}
-
-		IEnumerable<Cell> ICellContainer.Cells
-		{
-			get
-			{
-				foreach (Cell cell in this)
-				{
-					yield return cell;
-				}
-			}
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return this.GetEnumerator();
 		}
 	}
 }

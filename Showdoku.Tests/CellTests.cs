@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Exceptions;
+using Showdoku.Setup;
 using System;
 
 namespace Showdoku
@@ -72,6 +73,84 @@ namespace Showdoku
 		}
 
 		[TestMethod]
+		public void A_cell_solution_should_not_be_deemed_valid_if_the_same_number_appears_elsewhere_in_the_same_block()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(1);
+
+			// Act
+			bool result = grid.Cells[1, 1].IsSolutionValid(1);
+
+			// Assert
+			result.Should().BeFalse();
+		}
+
+		[TestMethod]
+		public void A_cell_solution_should_not_be_deemed_valid_if_the_same_number_appears_elsewhere_in_the_same_row()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(1);
+
+			// Act
+			bool result = grid.Cells[0, 8].IsSolutionValid(1);
+
+			// Assert
+			result.Should().BeFalse();
+		}
+
+		[TestMethod]
+		public void A_cell_solution_should_not_be_deemed_valid_if_the_same_number_appears_elsewhere_in_the_same_column()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(1);
+
+			// Act
+			bool result = grid.Cells[8, 0].IsSolutionValid(1);
+
+			// Assert
+			result.Should().BeFalse();
+		}
+
+		[TestMethod]
+		public void A_cell_solution_should_be_deemed_valid_if_the_same_number_does_not_appear_anywhere_else_in_the_same_block_or_row_or_column()
+		{
+			// For this test, start with a solved grid, then empty a cell, remembering its value.
+			// That value should necessarily be a valid solution for the cell that's been emptied.
+
+			// Arrange
+			Grid grid = new GridBuilder().WithSolvedGrid();
+			int cellValue = grid.Cells[0, 0].Solution.Value;
+			grid.Cells[0, 0].Empty();
+
+			// Act
+			bool result = grid.Cells[0, 0].IsSolutionValid(cellValue);
+
+			// Assert
+			result.Should().BeTrue();
+		}
+
+		[TestMethod]
+		public void Solving_should_throw_if_the_cell_is_already_solved()
+		{
+			// Arrange
+			Grid grid = new Grid();
+			Cell cell = grid.Cells[0, 0];
+
+			// Act			
+			Action act = () =>
+			{
+				cell.Solve(1);
+				cell.Solve(2);
+			};
+
+			// Assert
+			act.Should().Throw<AlreadySolvedException>();
+		}
+
+		[TestMethod]
 		public void Solving_should_throw_if_the_solution_is_less_than_1()
 		{
 			// Arrange
@@ -124,11 +203,65 @@ namespace Showdoku
 			// Act
 			Action act = () =>
 			{
-				cell.Solve(solution);				
+				cell.Solve(solution);
 			};
 
 			// Assert
 			act.Should().NotThrow();
+		}
+
+		[TestMethod]
+		public void Solving_a_cell_with_a_value_that_appears_in_the_same_block_should_throw()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+
+			// Act
+			grid.Cells[0, 0].Solve(4);
+
+			Action act = () =>
+			{
+				grid.Cells[1, 1].Solve(4);
+			};
+
+			// Assert
+			act.Should().Throw<InvalidSolutionException>();
+		}
+
+		[TestMethod]
+		public void Solving_a_cell_with_a_value_that_appears_in_the_same_column_should_throw()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+
+			// Act
+			grid.Cells[0, 0].Solve(5);
+
+			Action act = () =>
+			{
+				grid.Cells[1, 0].Solve(5);
+			};
+
+			// Assert
+			act.Should().Throw<InvalidSolutionException>();
+		}
+
+		[TestMethod]
+		public void Solving_a_cell_with_a_value_that_appears_in_the_same_row_should_throw()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+
+			// Act
+			grid.Cells[0, 0].Solve(6);
+
+			Action act = () =>
+			{
+				grid.Cells[0, 1].Solve(6);
+			};
+
+			// Assert
+			act.Should().Throw<InvalidSolutionException>();
 		}
 
 		[TestMethod]
@@ -166,25 +299,7 @@ namespace Showdoku
 			// Assert
 			cell.PencilMarks.Should().Contain(5);
 			act.Should().NotThrow();
-		}
-
-		[TestMethod]
-		public void Solving_should_throw_if_the_cell_is_already_solved()
-		{
-			// Arrange
-			Grid grid = new Grid();
-			Cell cell = grid.Cells[0, 0];
-
-			// Act			
-			Action act = () =>
-			{
-				cell.Solve(1);
-				cell.Solve(2);
-			};
-
-			// Assert
-			act.Should().Throw<AlreadySolvedException>();
-		}
+		}		
 
 		[TestMethod]
 		public void Removing_a_pencil_mark_should_remove_it_from_the_list_of_pencil_marks()

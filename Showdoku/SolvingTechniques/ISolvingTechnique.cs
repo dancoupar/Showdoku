@@ -1,5 +1,8 @@
 ﻿namespace Showdoku.SolvingTechniques
 {
+	/// <summary>
+	/// A technique for solving cells within a sudoku grid.
+	/// </summary>
 	public interface ISolvingTechnique
 	{
 		/// <summary>
@@ -14,7 +17,9 @@
 		/// <param name="grid">
 		/// The grid to which the technique should be applied.
 		/// </param>
-		/// <exception cref="ArgumentNullException"></exception>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified grid is null.
+		/// </exception>
 		public void Apply(Grid grid);
 	}
 }

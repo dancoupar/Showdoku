@@ -4,11 +4,23 @@ using System.Collections.Generic;
 
 namespace Showdoku
 {
+	/// <summary>
+	/// Represents a single cell within a sudoku grid.
+	/// </summary>
 	public class Cell
 	{
 		private readonly Grid grid;
 		private readonly List<int> pencilMarks;
 
+		/// <summary>
+		/// Creates a new cell to be contained in the specified sudoku grid.
+		/// </summary>
+		/// <param name="grid">
+		/// The grid to which the cell will belong.
+		/// </param>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified grid is null.
+		/// </exception>
 		public Cell(Grid grid)
 		{
 			this.grid = grid ?? throw new ArgumentNullException(nameof(grid), "Argument cannot be null.");
@@ -25,6 +37,9 @@ namespace Showdoku
 			private set;
 		}
 
+		/// <summary>
+		/// Gets a collection of possible solutions for this cell.
+		/// </summary>
 		public IReadOnlyCollection<int> PencilMarks
 		{
 			get
@@ -33,6 +48,18 @@ namespace Showdoku
 			}
 		}
 
+		/// <summary>
+		/// Eliminates the specified value as a possible solution to this cell.
+		/// </summary>
+		/// <param name="pencilMark">
+		/// The number to remove from the list of possible solutions for this cell.
+		/// </param>
+		/// <exception cref="AlreadySolvedException">
+		/// Thrown if this cell has already been solved.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if the specified solution is not a number between 1 and 9 (inclusive).
+		/// </exception>
 		public void RemovePencilMark(int pencilMark)
 		{
 			if (this.IsSolved())
@@ -55,8 +82,8 @@ namespace Showdoku
 
 		/// <summary>
 		/// Gets a value indicating whether the specified solution is valid for this cell. A
-		/// solution is valid only if it does not appear anywhere else in the same block, row
-		/// or column as this cell.
+		/// solution is valid only if it does not appear elsewhere within the same block, row or
+		/// column that this cell occupies.
 		/// </summary>	
 		/// <param name="solution">
 		/// The proposed solution for the cell.
@@ -64,7 +91,6 @@ namespace Showdoku
 		/// <returns>
 		/// True if the proposed solution is valid, otherwise false.
 		/// </returns>
-		/// <exception cref="IndexOutOfRangeException"></exception>
 		public bool IsSolutionValid(int solution)
 		{			
 			if (solution < 1 || solution > 9)
@@ -90,6 +116,22 @@ namespace Showdoku
 			return true;
 		}
 
+		/// <summary>
+		/// Solves this cell with the specified solution.
+		/// </summary>
+		/// <param name="solution">
+		/// The solution to this cell.
+		/// </param>
+		/// <exception cref="AlreadySolvedException">
+		/// Thrown if this cell has already been solved.
+		/// </exception>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown if the specified solution is not a number between 1 and 9 (inclusive).
+		/// </exception>
+		/// <exception cref="InvalidSolutionException">
+		/// Thrown if the specified solution already appears within the same block, row or column
+		/// that this cell occupies.
+		/// </exception>
 		public void Solve(int solution)
 		{
 			if (this.IsSolved())
@@ -126,17 +168,26 @@ namespace Showdoku
 			this.pencilMarks.Clear();
 		}
 
+		/// <summary>
+		/// Empties this cell, removing any existing solution.
+		/// </summary>
 		public void Empty()
 		{
 			this.Solution = null;
 			this.ResetPencilMarks();
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this cell has been solved.
+		/// </summary>
+		/// <returns>
+		/// True if this cell is solved, otherwise false.
+		/// </returns>
 		public bool IsSolved()
 		{
 			return this.Solution.HasValue;
 		}
-
+		
 		private void ResetPencilMarks()
 		{
 			this.pencilMarks.Clear();
