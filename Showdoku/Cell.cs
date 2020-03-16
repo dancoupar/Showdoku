@@ -120,7 +120,7 @@ namespace Showdoku
 		/// Solves this cell with the specified solution.
 		/// </summary>
 		/// <param name="solution">
-		/// The solution to this cell.
+		/// The solution to this cell; a number between 1 and 9.
 		/// </param>
 		/// <exception cref="AlreadySolvedException">
 		/// Thrown if this cell has already been solved.

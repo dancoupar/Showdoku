@@ -20,7 +20,7 @@ namespace Showdoku
 		/// <exception cref="ArgumentNullException">
 		/// Thrown if the specified collection of techniques is null.
 		/// </exception>
-		public Solver(ICollection<ISolvingTechnique> techniques)
+		public Solver(params ISolvingTechnique[] techniques)
 		{
 			this.techniques = techniques ?? throw new ArgumentNullException(nameof(techniques), "Argument cannot be null.");
 		}

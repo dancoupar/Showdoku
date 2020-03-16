@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Showdoku
+namespace Showdoku.Exceptions
 {
 	/// <summary>
 	/// The exception thrown if a cell has already been solved.

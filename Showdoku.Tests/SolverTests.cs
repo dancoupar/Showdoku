@@ -14,17 +14,14 @@ namespace Showdoku
 		{
 			// Arrange			
 			Solver solver = new Solver(
-				new List<ISolvingTechnique>()
-				{
-					new SoleCandidateTechnique(),
-					new UniqueCandidateTechnique()
-				}
+				new SoleCandidateTechnique(),
+				new UniqueCandidateTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithMediumGrid_B();
 
 			// Act
-			bool result = solver.TrySolve(grid, out string report);
+			bool result = solver.TrySolve(grid, out _);
 
 			// Assert
 			result.Should().BeTrue();
