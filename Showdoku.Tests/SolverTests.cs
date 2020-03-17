@@ -14,8 +14,8 @@ namespace Showdoku
 		{
 			// Arrange			
 			Solver solver = new Solver(
-				new SoleCandidateTechnique(),
-				new UniqueCandidateTechnique()
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithMediumGrid_B();

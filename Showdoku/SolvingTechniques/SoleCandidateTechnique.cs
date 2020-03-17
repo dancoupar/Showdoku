@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace Showdoku.SolvingTechniques
 {
 	/// <summary>
-	/// A technique for solving cells within a sudoku grid by eliminating possibilities for
-	/// each cell based on whether those possibilities already appear in the same block, row
-	/// or column that the cell occupies.
+	/// A technique for solving cells within a sudoku grid based on whether any cells contain any
+	/// possibilities that are unique within the same block, row or column that the cell occupies.
 	/// </summary>
 	public class SoleCandidateTechnique : ISolvingTechnique
 	{
@@ -17,7 +17,7 @@ namespace Showdoku.SolvingTechniques
 		{
 			get
 			{
-				return false;
+				return true;
 			}
 		}
 
@@ -41,58 +41,65 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!cell.IsSolved())
 				{
-					this.ApplyToCell(grid, cell);
+					if (this.ApplyToCell(grid, cell))
+					{
+						// This technique stops once it makes progress,
+						// in order for the more basic techniques to be
+						// reapplied.
+
+						return;
+					}
 				}
 			}
 		}
 
-		private void ApplyToCell(Grid grid, Cell cell)
+		private bool ApplyToCell(Grid grid, Cell cell)
 		{
 			Block containingBlock = grid.GetBlockContainingCell(cell);
 			Row containingRow = grid.GetRowContainingCell(cell);
 			Column containingColumn = grid.GetColumnContainingCell(cell);
 
-			foreach (Cell blockCell in containingBlock.Cells)
+			foreach (int pencilMark in cell.PencilMarks)
 			{
-				if (blockCell.IsSolved())
+				// Is this the only cell in its block with this pencil mark?
+				if (this.IsOnlyCellWithPencilMark(cell, containingBlock, pencilMark))
 				{
-					// Number appears elsewhere in same block
-					cell.RemovePencilMark(blockCell.Solution.Value);
+					// If so, we can solve it
+					cell.Solve(pencilMark);
+					return true;
+				}
 
-					if (cell.IsSolved())
-					{
-						return;
-					}
+				// Is this the only cell in its row with this pencil mark?
+				if (this.IsOnlyCellWithPencilMark(cell, containingRow, pencilMark))
+				{
+					// If so, we can solve it
+					cell.Solve(pencilMark);
+					return true;
+				}
+
+				// Is this the only cell in its column with this pencil mark?
+				if (this.IsOnlyCellWithPencilMark(cell, containingColumn, pencilMark))
+				{
+					// If so, we can solve it
+					cell.Solve(pencilMark);
+					return true;
 				}
 			}
 
-			foreach (Cell rowCell in containingRow.Cells)
-			{
-				if (rowCell.IsSolved())
-				{
-					// Number appears elsewhere in same row
-					cell.RemovePencilMark(rowCell.Solution.Value);
+			return false;
+		}
 
-					if (cell.IsSolved())
-					{
-						return;
-					}
+		private bool IsOnlyCellWithPencilMark(Cell cell, CellCollection container, int pencilMark)
+		{
+			foreach (Cell otherCell in container.Where((c) => c != cell))
+			{
+				if (otherCell.PencilMarks.Contains(pencilMark))
+				{
+					return false;
 				}
 			}
 
-			foreach (Cell columnCell in containingColumn.Cells)
-			{
-				if (columnCell.IsSolved())
-				{
-					// Number appears elsewhere in same column
-					cell.RemovePencilMark(columnCell.Solution.Value);
-
-					if (cell.IsSolved())
-					{
-						return;
-					}
-				}
-			}
+			return true;
 		}
 	}
 }
