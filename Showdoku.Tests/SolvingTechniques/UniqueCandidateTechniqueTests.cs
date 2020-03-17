@@ -41,11 +41,16 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[0, 6].Solve(5);
 			grid.Cells[5, 8].Solve(4);
 
-			// The unique candidate technique relies on the sole candidate technique eliminating
-			// pencil marks.
+			// Eliminate some pencil marks from block 0,2 using basic elimination; a 4 appears
+			// elsewhere outside the block in columns 1 and 2 and in row 8.
 
-			SoleCandidateTechnique soleCandidate = new SoleCandidateTechnique();
-			soleCandidate.Apply(grid);
+			grid.Cells[1, 6].RemovePencilMark(4);
+			grid.Cells[2, 6].RemovePencilMark(4);
+			grid.Cells[1, 7].RemovePencilMark(4);
+			grid.Cells[2, 7].RemovePencilMark(4);
+			grid.Cells[0, 8].RemovePencilMark(4);
+			grid.Cells[1, 8].RemovePencilMark(4);
+			grid.Cells[2, 8].RemovePencilMark(4);
 
 			UniqueCandidateTechnique cut = new UniqueCandidateTechnique();
 
@@ -78,11 +83,11 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[3, 3].Solve(6);
 			grid.Cells[5, 6].Solve(6);
 
-			// The unique candidate technique relies on the sole candidate technique eliminating
-			// pencil marks.
+			// Eliminate some pencil marks from block 1,0 using basic elimination; a 6 appears
+			// elsewhere outside the block in columns 3 and 5.
 
-			SoleCandidateTechnique soleCandidate = new SoleCandidateTechnique();
-			soleCandidate.Apply(grid);
+			grid.Cells[3, 0].RemovePencilMark(6);
+			grid.Cells[5, 0].RemovePencilMark(6);	
 
 			UniqueCandidateTechnique cut = new UniqueCandidateTechnique();
 
@@ -115,11 +120,15 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[1, 7].Solve(5);
 			grid.Cells[4, 8].Solve(9);
 
-			// The unique candidate technique relies on the sole candidate technique eliminating
-			// pencil marks.
+			// Eliminate some pencil marks using basic elimination. In block 1,0, a 5 appears
+			// elsewhere outside the block in row 1. In block 1,1, a 5 appears elsewhere outside
+			// outside the block in rows 3 and 5. In block 1,2, a 5 appears elsewhere outside the
+			// block in row 7.
 
-			SoleCandidateTechnique soleCandidate = new SoleCandidateTechnique();
-			soleCandidate.Apply(grid);
+			grid.Cells[4, 1].RemovePencilMark(5);
+			grid.Cells[4, 3].RemovePencilMark(5);
+			grid.Cells[4, 5].RemovePencilMark(5);
+			grid.Cells[4, 7].RemovePencilMark(5);
 
 			UniqueCandidateTechnique cut = new UniqueCandidateTechnique();
 
