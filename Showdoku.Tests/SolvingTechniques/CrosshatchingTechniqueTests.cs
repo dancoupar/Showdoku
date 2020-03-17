@@ -25,7 +25,76 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[TestMethod]
-		public void If_a_cell_has_only_one_pencil_mark_it_should_be_solved()
+		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_block()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(8);
+			
+			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+
+			// Act
+			cut.Apply(grid);
+
+			// Assert
+			grid.Cells[1, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[2, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 1].PencilMarks.Should().NotContain(8);
+			grid.Cells[1, 1].PencilMarks.Should().NotContain(8);
+			grid.Cells[2, 1].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 2].PencilMarks.Should().NotContain(8);
+			grid.Cells[1, 2].PencilMarks.Should().NotContain(8);
+			grid.Cells[2, 2].PencilMarks.Should().NotContain(8);
+		}
+
+		[TestMethod]
+		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_row()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(8);
+
+			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+
+			// Act
+			cut.Apply(grid);
+
+			// Assert
+			grid.Cells[1, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[2, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[3, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[4, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[5, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[6, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[7, 0].PencilMarks.Should().NotContain(8);
+			grid.Cells[8, 0].PencilMarks.Should().NotContain(8);
+		}
+
+		[TestMethod]
+		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_column()
+		{
+			// Arrange
+			Grid grid = new GridBuilder().WithEmptyGrid();
+			grid.Cells[0, 0].Solve(8);
+
+			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+
+			// Act
+			cut.Apply(grid);
+
+			// Assert
+			grid.Cells[0, 1].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 2].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 3].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 4].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 5].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 6].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 7].PencilMarks.Should().NotContain(8);
+			grid.Cells[0, 8].PencilMarks.Should().NotContain(8);
+		}
+
+		[TestMethod]
+		public void A_cell_where_all_but_one_number_appears_elsewhere_in_the_same_block_row_or_column_should_be_solved()
 		{
 			// Arrange
 
