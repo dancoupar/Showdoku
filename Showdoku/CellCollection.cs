@@ -34,6 +34,18 @@ namespace Showdoku
 		}
 
 		/// <summary>
+		/// Gets the total number of pencil marks for all cells within this collection. The lower the
+		/// number, the closer the collection is to being solved.
+		/// </summary>
+		/// <returns>
+		/// The total number of pencil marks.
+		/// </returns>
+		public int GetPencilMarkCount()
+		{
+			return this.Sum((c) => c.PencilMarks.Count);
+		}
+
+		/// <summary>
 		/// Gets a value indicating whether this collection includes the specified cell.
 		/// </summary>
 		/// <param name="cell">

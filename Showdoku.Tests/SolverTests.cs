@@ -2,13 +2,67 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using Showdoku.SolvingTechniques;
-using System.Collections.Generic;
 
 namespace Showdoku
 {
 	[TestClass]
 	public class SolverTests
 	{
+		[TestMethod]
+		public void Should_be_able_to_solve_easy_grid_a()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithEasyGrid_A();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_easy_grid_b()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithEasyGrid_B();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_medium_grid_a()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithMediumGrid_A();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}		
+
 		[TestMethod]
 		public void Should_be_able_to_solve_medium_grid_b()
 		{
@@ -19,6 +73,64 @@ namespace Showdoku
 			);
 
 			Grid grid = new GridBuilder().WithMediumGrid_B();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_hard_grid_a()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithHardGrid_A();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_hard_grid_b()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique(),
+				new BlockLockedCandidatesTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithHardGrid_B();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_hard_grid_c()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithHardGrid_C();
 
 			// Act
 			bool result = solver.TrySolve(grid, out _);

@@ -261,9 +261,45 @@
 			grid.Cells[7, 8].Solve(8);
 
 			return this;
-		}
+		}		
 
 		public GridBuilder WithHardGrid_A()
+		{
+			foreach (Cell cell in grid.Cells)
+			{
+				cell.Empty();
+			}
+
+			grid.Cells[3, 0].Solve(2);
+			grid.Cells[4, 0].Solve(4);
+			grid.Cells[5, 0].Solve(7);
+			grid.Cells[3, 1].Solve(1);
+			grid.Cells[7, 1].Solve(7);
+			grid.Cells[0, 2].Solve(1);
+			grid.Cells[1, 2].Solve(9);
+			grid.Cells[2, 2].Solve(7);
+			grid.Cells[5, 2].Solve(3);
+			grid.Cells[6, 2].Solve(5);
+			grid.Cells[5, 3].Solve(1);
+			grid.Cells[8, 3].Solve(3);
+			grid.Cells[1, 4].Solve(5);
+			grid.Cells[7, 4].Solve(6);
+			grid.Cells[6, 5].Solve(9);
+			grid.Cells[8, 5].Solve(8);
+			grid.Cells[0, 6].Solve(6);
+			grid.Cells[2, 6].Solve(5);
+			grid.Cells[8, 6].Solve(4);
+			grid.Cells[1, 7].Solve(3);
+			grid.Cells[3, 7].Solve(9);
+			grid.Cells[5, 7].Solve(8);
+			grid.Cells[2, 8].Solve(9);
+			grid.Cells[4, 8].Solve(7);
+			grid.Cells[6, 8].Solve(3);
+
+			return this;
+		}
+
+		public GridBuilder WithHardGrid_B()
 		{
 			foreach (Cell cell in grid.Cells)
 			{
@@ -300,14 +336,40 @@
 			return this;
 		}
 
-		public GridBuilder WithHardGrid_B()
+		public GridBuilder WithHardGrid_C()
 		{
 			foreach (Cell cell in grid.Cells)
 			{
 				cell.Empty();
 			}
 
-			
+			grid.Cells[2, 0].Solve(2);
+			grid.Cells[4, 0].Solve(4);
+			grid.Cells[5, 0].Solve(3);
+			grid.Cells[2, 1].Solve(3);
+			grid.Cells[3, 1].Solve(6);
+			grid.Cells[5, 1].Solve(7);
+			grid.Cells[0, 2].Solve(6);
+			grid.Cells[3, 2].Solve(9);
+			grid.Cells[8, 2].Solve(1);
+			grid.Cells[2, 3].Solve(1);
+			grid.Cells[3, 3].Solve(2);
+			grid.Cells[6, 3].Solve(8);
+			grid.Cells[0, 4].Solve(9);
+			grid.Cells[4, 4].Solve(7);
+			grid.Cells[8, 4].Solve(3);
+			grid.Cells[2, 5].Solve(7);
+			grid.Cells[5, 5].Solve(6);
+			grid.Cells[6, 5].Solve(2);
+			grid.Cells[0, 6].Solve(8);
+			grid.Cells[5, 6].Solve(2);
+			grid.Cells[8, 6].Solve(4);
+			grid.Cells[3, 7].Solve(5);
+			grid.Cells[5, 7].Solve(1);
+			grid.Cells[6, 7].Solve(6);
+			grid.Cells[3, 8].Solve(4);
+			grid.Cells[4, 8].Solve(8);
+			grid.Cells[6, 8].Solve(3);
 
 			return this;
 		}

@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Showdoku
 {
@@ -7,11 +8,114 @@ namespace Showdoku
 	public class ColumnTests
 	{
 		[TestMethod]
+		public void Creating_a_column_should_throw_if_no_cells_are_provided()
+		{
+			// Arrange
+			Column column;
+
+			// Act
+			Action act = () =>
+			{
+				column = new Column(null);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentNullException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_column_should_fail_if_fewer_than_9_cells_are_provided()
+		{
+			// Arrange
+			Column column;
+			Grid grid = new Grid();			
+			Cell[] cells = new Cell[8]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid)
+			};
+
+			// Act
+			Action act = () =>
+			{
+				column = new Column(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_column_should_fail_if_more_than_9_cells_are_provided()
+		{
+			// Arrange
+			Column column;
+			Grid grid = new Grid();
+			Cell[] cells = new Cell[10]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid)
+			};
+
+			// Act
+			Action act = () =>
+			{
+				column = new Column(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_column_should_fail_if_any_missing_cells_are_provided()
+		{
+			// Arrange
+			Column column;
+			Grid grid = new Grid();
+			Cell[] cells = new Cell[9]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				null
+			};			
+
+			// Act
+			Action act = () =>
+			{
+				column = new Column(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
 		public void All_columns_should_contain_9_cells()
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();			
+			Grid grid = new Grid();
 
 			// Assert
 			foreach (Column column in grid.Columns)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Showdoku
 {
@@ -18,7 +19,7 @@ namespace Showdoku
 		/// Thrown if the specified array is null.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		/// Thrown if the specified array does not have 9 elements.
+		/// Thrown if the specified array does not contain 9 elements, or if any elements are null.
 		/// </exception>
 		public Column(Cell[] cells)
 		{
@@ -27,6 +28,11 @@ namespace Showdoku
 			if (cells.Length != 9)
 			{
 				throw new ArgumentException("Array must contain 9 elements.", nameof(cells));
+			}
+
+			if (cells.Any((c) => c == null))
+			{
+				throw new ArgumentException("Array cannot contain null elements.");
 			}
 		}
 

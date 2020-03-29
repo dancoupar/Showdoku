@@ -9,7 +9,7 @@ namespace Showdoku.SolvingTechniques
 	public class BlockLockedCandidatesTechniqueTests
 	{
 		[TestMethod]
-		public void Technique_should_throw_if_passed_null_grid()
+		public void Technique_should_throw_if_no_grid_is_provided()
 		{
 			// Arrange
 			BlockLockedCandidatesTechnique cut = new BlockLockedCandidatesTechnique();
@@ -60,9 +60,28 @@ namespace Showdoku.SolvingTechniques
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
 
+			grid.Cells[0, 4].Solve(6);
+			grid.Cells[3, 3].Solve(1);
+			grid.Cells[5, 3].Solve(2);
+			grid.Cells[3, 5].Solve(3);
+			grid.Cells[5, 5].Solve(4);
+
+			grid.Cells[3, 4].RemovePencilMark(6);
+			grid.Cells[4, 4].RemovePencilMark(6);
+			grid.Cells[5, 4].RemovePencilMark(6);
+
+			BlockLockedCandidatesTechnique cut = new BlockLockedCandidatesTechnique();
+
 			// Act
+			cut.Apply(grid);
 
 			// Assert
+			grid.Cells[4, 0].PencilMarks.Should().NotContain(6);
+			grid.Cells[4, 1].PencilMarks.Should().NotContain(6);
+			grid.Cells[4, 2].PencilMarks.Should().NotContain(6);
+			grid.Cells[4, 6].PencilMarks.Should().NotContain(6);
+			grid.Cells[4, 7].PencilMarks.Should().NotContain(6);
+			grid.Cells[4, 8].PencilMarks.Should().NotContain(6);
 		}
 	}
 }

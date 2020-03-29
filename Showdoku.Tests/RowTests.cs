@@ -1,11 +1,115 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Showdoku
 {
 	[TestClass]
 	public class RowTests
 	{
+		[TestMethod]
+		public void Creating_a_row_should_throw_if_no_cells_are_provided()
+		{
+			// Arrange
+			Row row;
+
+			// Act
+			Action act = () =>
+			{
+				row = new Row(null);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentNullException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_row_should_fail_if_fewer_than_9_cells_are_provided()
+		{
+			// Arrange
+			Row row;
+			Grid grid = new Grid();
+			Cell[] cells = new Cell[8]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid)
+			};
+
+			// Act
+			Action act = () =>
+			{
+				row = new Row(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_row_should_fail_if_more_than_9_cells_are_provided()
+		{
+			// Arrange
+			Row row;
+			Grid grid = new Grid();
+			Cell[] cells = new Cell[10]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid)
+			};
+
+			// Act
+			Action act = () =>
+			{
+				row = new Row(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_row_should_fail_if_any_missing_cells_are_provided()
+		{
+			// Arrange
+			Row row;
+			Grid grid = new Grid();
+			Cell[] cells = new Cell[9]
+			{
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				new Cell(grid),
+				null
+			};
+
+			// Act
+			Action act = () =>
+			{
+				row = new Row(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
 		[TestMethod]
 		public void All_rows_should_contain_9_cells()
 		{

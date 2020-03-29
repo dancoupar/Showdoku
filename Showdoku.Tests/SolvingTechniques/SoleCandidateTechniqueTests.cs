@@ -9,7 +9,7 @@ namespace Showdoku.SolvingTechniques
 	public class SoleCandidateTechniqueTests
 	{
 		[TestMethod]
-		public void Technique_should_throw_if_passed_null_grid()
+		public void Technique_should_throw_if_no_grid_is_provided()
 		{
 			// Arrange
 			SoleCandidateTechnique cut = new SoleCandidateTechnique();

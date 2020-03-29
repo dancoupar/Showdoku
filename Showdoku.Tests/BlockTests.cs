@@ -1,11 +1,128 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Showdoku.Exceptions;
+using System;
 
 namespace Showdoku
 {
 	[TestClass]
 	public class BlockTests
 	{
+		[TestMethod]
+		public void Creating_a_block_should_throw_if_no_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(null);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentNullException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_block_should_fail_if_fewer_than_3_rows_of_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+			Grid grid = new Grid();
+			Cell[,] cells = new Cell[3, 2];
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_block_should_fail_if_more_than_3_rows_of_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+			Grid grid = new Grid();
+			Cell[,] cells = new Cell[3, 4];
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_row_should_fail_if_fewer_than_3_columns_of_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+			Grid grid = new Grid();
+			Cell[,] cells = new Cell[2, 3];
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_row_should_fail_if_more_than_3_columns_of_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+			Grid grid = new Grid();
+			Cell[,] cells = new Cell[4, 3];
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
+		[TestMethod]
+		public void Creating_a_block_should_fail_if_any_missing_cells_are_provided()
+		{
+			// Arrange
+			Block block;
+			Grid grid = new Grid();
+			Cell[,] cells = new Cell[3, 3];
+			cells[0, 0] = new Cell(grid);
+			cells[1, 0] = new Cell(grid);
+			cells[2, 0] = new Cell(grid);
+			cells[0, 1] = new Cell(grid);
+			cells[1, 1] = new Cell(grid);
+			cells[2, 1] = new Cell(grid);
+			cells[0, 2] = new Cell(grid);
+			cells[1, 2] = new Cell(grid);
+			cells[2, 2] = null;
+
+			// Act
+			Action act = () =>
+			{
+				block = new Block(cells);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentException>();
+		}
+
 		[TestMethod]
 		public void All_blocks_should_have_2_dimensions()
 		{
@@ -173,6 +290,96 @@ namespace Showdoku
 
 			// Assert
 			grid.Blocks[0, 0].IsSolved().Should().BeFalse();
+		}
+
+		[TestMethod]
+		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_no_cell_is_provided()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			Action act = () =>
+			{
+				grid.Blocks[0, 0].XIndexOf(null);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentNullException>();
+		}
+
+		[TestMethod]
+		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_no_cell_is_provided()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			Action act = () =>
+			{
+				grid.Blocks[0, 0].YIndexOf(null);
+			};
+
+			// Assert
+			act.Should().Throw<ArgumentNullException>();
+		}
+
+		[TestMethod]
+		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			Action act = () =>
+			{
+				grid.Blocks[0, 0].XIndexOf(grid.Cells[4, 4]);
+			};
+
+			// Assert
+			act.Should().Throw<CellNotFoundException>();
+		}
+
+		[TestMethod]
+		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			Action act = () =>
+			{
+				grid.Blocks[0, 0].YIndexOf(grid.Cells[4, 4]);
+			};
+
+			// Assert
+			act.Should().Throw<CellNotFoundException>();
+		}
+
+		[TestMethod]
+		public void Correct_x_index_of_contained_cell_should_be_returned()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			int result = grid.Blocks[1, 1].XIndexOf(grid.Cells[3, 4]);
+
+			// Assert
+			result.Should().Be(0);
+		}
+
+		[TestMethod]
+		public void Correct_y_index_of_contained_cell_should_be_returned()
+		{
+			// Arrange
+			Grid grid = new Grid();
+
+			// Act
+			int result = grid.Blocks[2, 2].YIndexOf(grid.Cells[7, 8]);
+
+			// Assert
+			result.Should().Be(2);
 		}
 	}
 }

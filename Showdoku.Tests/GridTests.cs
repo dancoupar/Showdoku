@@ -1,8 +1,6 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Showdoku.Exceptions;
 using Showdoku.Setup;
-using System;
 
 namespace Showdoku
 {
