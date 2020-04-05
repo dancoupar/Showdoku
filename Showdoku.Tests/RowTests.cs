@@ -24,7 +24,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_row_should_fail_if_fewer_than_9_cells_are_provided()
+		public void Creating_a_row_should_fail_if_fewer_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Row row;
@@ -52,7 +52,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_row_should_fail_if_more_than_9_cells_are_provided()
+		public void Creating_a_row_should_fail_if_more_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Row row;
@@ -111,7 +111,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void All_rows_should_contain_9_cells()
+		public void All_rows_should_contain_nine_cells()
 		{
 			// Arrange
 			// Act

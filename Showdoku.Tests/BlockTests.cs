@@ -25,7 +25,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_block_should_fail_if_fewer_than_3_rows_of_cells_are_provided()
+		public void Creating_a_block_should_fail_if_fewer_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -43,7 +43,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_block_should_fail_if_more_than_3_rows_of_cells_are_provided()
+		public void Creating_a_block_should_fail_if_more_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -61,7 +61,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_row_should_fail_if_fewer_than_3_columns_of_cells_are_provided()
+		public void Creating_a_row_should_fail_if_fewer_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -79,7 +79,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Creating_a_row_should_fail_if_more_than_3_columns_of_cells_are_provided()
+		public void Creating_a_row_should_fail_if_more_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -124,7 +124,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void All_blocks_should_have_2_dimensions()
+		public void All_blocks_should_have_two_dimensions()
 		{
 			// Arrange
 			// Act
@@ -138,7 +138,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void All_blocks_should_contain_3_by_3_cells()
+		public void All_blocks_should_contain_three_by_three_cells()
 		{
 			// Arrange
 			// Act

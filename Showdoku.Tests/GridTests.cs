@@ -8,7 +8,7 @@ namespace Showdoku
 	public class GridTests
 	{
 		[TestMethod]
-		public void A_grid_should_have_2_dimensions()
+		public void A_grid_should_have_two_dimensions()
 		{
 			// Arrange
 			// Act
@@ -19,7 +19,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void A_grid_should_contain_9_by_9_cells()
+		public void A_grid_should_contain_nine_by_nine_cells()
 		{
 			// Arrange			
 			// Act
@@ -31,7 +31,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void A_grid_should_contain_3_by_3_blocks()
+		public void A_grid_should_contain_three_by_three_blocks()
 		{
 			// Arrange
 			// Act
@@ -43,7 +43,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void A_grid_should_contain_9_rows()
+		public void A_grid_should_contain_nine_rows()
 		{
 			// Arrange
 			// Act
@@ -54,7 +54,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void A_grid_should_contain_9_columns()
+		public void A_grid_should_contain_nine_columns()
 		{
 			// Arrange			
 			// Act

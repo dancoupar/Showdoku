@@ -83,12 +83,51 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Should_be_able_to_solve_hard_grid_a()
+		public void Should_be_able_to_solve_medium_grid_c()
 		{
 			// Arrange			
 			Solver solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithMediumGrid_C();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}		
+
+		[TestMethod]
+		public void Should_be_able_to_solve_medium_grid_d()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique()
+			);
+
+			Grid grid = new GridBuilder().WithMediumGrid_D();
+
+			// Act
+			bool result = solver.TrySolve(grid, out _);
+
+			// Assert
+			result.Should().BeTrue();
+			this.AssertSolutionIsValid(grid);
+		}
+
+		[TestMethod]
+		public void Should_be_able_to_solve_hard_grid_a()
+		{
+			// Arrange			
+			Solver solver = new Solver(
+				new CrosshatchingTechnique(),
+				new SoleCandidateTechnique(),
+				new LockedCandidatesTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithHardGrid_A();
@@ -108,7 +147,7 @@ namespace Showdoku
 			Solver solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
-				new BlockLockedCandidatesTechnique()
+				new LockedCandidatesTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithHardGrid_B();
@@ -122,15 +161,16 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Should_be_able_to_solve_hard_grid_c()
+		public void Should_be_able_to_solve_worlds_hardest_grid()
 		{
 			// Arrange			
 			Solver solver = new Solver(
 				new CrosshatchingTechnique(),
-				new SoleCandidateTechnique()
+				new SoleCandidateTechnique(),
+				new LockedCandidatesTechnique()
 			);
 
-			Grid grid = new GridBuilder().WithHardGrid_C();
+			Grid grid = new GridBuilder().WithWorldsHardestGrid();
 
 			// Act
 			bool result = solver.TrySolve(grid, out _);

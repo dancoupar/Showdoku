@@ -10,7 +10,7 @@ namespace Showdoku
 	public class CellTests
 	{
 		[TestMethod]
-		public void A_new_cell_should_have_9_pencil_marks()
+		public void A_new_cell_should_have_nine_pencil_marks()
 		{
 			// Arrange
 			// Act
@@ -151,7 +151,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Solving_should_throw_if_the_solution_is_less_than_1()
+		public void Solving_should_throw_if_the_solution_is_less_than_one()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -168,7 +168,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Solving_should_throw_if_the_solution_is_more_than_9()
+		public void Solving_should_throw_if_the_solution_is_more_than_nine()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -194,7 +194,7 @@ namespace Showdoku
 		[DataRow(7)]
 		[DataRow(8)]
 		[DataRow(9)]
-		public void Solving_should_allow_all_values_between_1_and_9(int solution)
+		public void Solving_should_allow_all_values_between_one_and_nine(int solution)
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -331,7 +331,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Removing_a_pencil_mark_should_throw_if_the_specified_value_is_less_than_1()
+		public void Removing_a_pencil_mark_should_throw_if_the_specified_value_is_less_than_one()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -348,7 +348,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void Removing_a_pencil_mark_should_throw_if_the_specified_value_is_more_than_9()
+		public void Removing_a_pencil_mark_should_throw_if_the_specified_value_is_more_than_nine()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -374,7 +374,7 @@ namespace Showdoku
 		[DataRow(7)]
 		[DataRow(8)]
 		[DataRow(9)]
-		public void Removing_a_pencil_mark_between_1_and_9_should_not_throw(int pencilMark)
+		public void Removing_a_pencil_mark_between_one_and_nine_should_not_throw(int pencilMark)
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -447,7 +447,7 @@ namespace Showdoku
 		}
 
 		[TestMethod]
-		public void A_solved_cell_that_has_been_emptied_should_have_9_pencil_marks()
+		public void A_solved_cell_that_has_been_emptied_should_have_nine_pencil_marks()
 		{
 			// Arrange
 			Grid grid = new Grid();

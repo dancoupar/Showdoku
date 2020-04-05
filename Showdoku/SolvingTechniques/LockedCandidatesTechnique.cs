@@ -5,11 +5,10 @@ using System.Linq;
 namespace Showdoku.SolvingTechniques
 {
 	/// <summary>
-	/// A technique for eliminating pencil marks within a sudoku grid by identifying pairs of cells
-	/// within individual blocks that share an exclusive pencil mark and that appear in the same row
-	/// or column.
+	/// A technique for eliminating pencil marks within a soduko grid by identifying pencil marks that
+	/// are restricted to a single row or column.
 	/// </summary>
-	public class BlockLockedCandidatesTechnique : ISolvingTechnique
+	public class LockedCandidatesTechnique : ISolvingTechnique
 	{
 		/// <summary>
 		/// Gets a value indicating whether the solving process should be restarted if this
@@ -45,19 +44,19 @@ namespace Showdoku.SolvingTechniques
 				{
 					IEnumerable<Cell> cellsWithPencilMark = block.Where((c) => c.PencilMarks.Contains(pencilMark));
 
-					if (cellsWithPencilMark.Count() == 2)
+					if (cellsWithPencilMark.Count() == 2 || cellsWithPencilMark.Count() == 3)
 					{
-						// We have a pair of cells within the block that share an exclusive pencil mark.
-						// Now need to work out if the two cells are in the same row or column.
-						
-						if (block.YIndexOf(cellsWithPencilMark.First()) == block.YIndexOf(cellsWithPencilMark.Last()))
+						// We have 2 or 3 or cells within the block that share an exclusive pencil mark.
+						// Now need to work out if all the cells share the same row or column.
+
+						if (cellsWithPencilMark.All((c) => block.YIndexOf(c) == block.YIndexOf(cellsWithPencilMark.First())))
 						{
-							// Same row
+							// All cells are in the same row
 							this.RemovePencilMarkFromAllCellsNotInBlock(grid.GetRowContainingCell(cellsWithPencilMark.First()), pencilMark, block);
 						}
-						else if (block.XIndexOf(cellsWithPencilMark.First()) == block.XIndexOf(cellsWithPencilMark.Last()))
+						else if (cellsWithPencilMark.All((c) => block.XIndexOf(c) == block.XIndexOf(cellsWithPencilMark.First())))
 						{
-							// Same column
+							// All cells are in the same column
 							this.RemovePencilMarkFromAllCellsNotInBlock(grid.GetColumnContainingCell(cellsWithPencilMark.First()), pencilMark, block);
 						}
 					}
