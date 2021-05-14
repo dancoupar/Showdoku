@@ -1,14 +1,13 @@
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Exceptions;
 using System;
+using Xunit;
 
 namespace Showdoku
 {
-	[TestClass]
 	public class BlockTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Creating_a_block_should_throw_if_no_cells_are_provided()
 		{
 			// Arrange
@@ -24,7 +23,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_block_should_fail_if_fewer_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
@@ -42,7 +41,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_block_should_fail_if_more_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
@@ -60,7 +59,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_row_should_fail_if_fewer_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
@@ -78,7 +77,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_row_should_fail_if_more_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
@@ -96,7 +95,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_block_should_fail_if_any_missing_cells_are_provided()
 		{
 			// Arrange
@@ -123,7 +122,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void All_blocks_should_have_two_dimensions()
 		{
 			// Arrange
@@ -137,7 +136,7 @@ namespace Showdoku
 			}
 		}
 
-		[TestMethod]
+		[Fact]
 		public void All_blocks_should_contain_three_by_three_cells()
 		{
 			// Arrange
@@ -152,7 +151,7 @@ namespace Showdoku
 			}
 		}
 
-		[TestMethod]
+		[Fact]
 		public void All_blocks_should_contain_expected_cells()
 		{
 			// Arrange
@@ -251,7 +250,7 @@ namespace Showdoku
 			grid.Blocks[2, 2].Cells[2, 2].Should().Be(grid.Cells[8, 8]);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_block_containing_only_solved_cells_should_be_classed_as_solved()
 		{
 			// Arrange
@@ -272,7 +271,7 @@ namespace Showdoku
 			grid.Blocks[0, 0].IsSolved().Should().BeTrue();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_block_containing_any_unsolved_cells_should_be_classed_as_unsolved()
 		{
 			// Arrange
@@ -292,7 +291,7 @@ namespace Showdoku
 			grid.Blocks[0, 0].IsSolved().Should().BeFalse();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_no_cell_is_provided()
 		{
 			// Arrange
@@ -308,7 +307,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_no_cell_is_provided()
 		{
 			// Arrange
@@ -324,7 +323,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
@@ -340,7 +339,7 @@ namespace Showdoku
 			act.Should().Throw<CellNotFoundException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
@@ -356,7 +355,7 @@ namespace Showdoku
 			act.Should().Throw<CellNotFoundException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Correct_x_index_of_contained_cell_should_be_returned()
 		{
 			// Arrange
@@ -369,7 +368,7 @@ namespace Showdoku
 			result.Should().Be(0);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Correct_y_index_of_contained_cell_should_be_returned()
 		{
 			// Arrange

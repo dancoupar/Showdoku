@@ -1,13 +1,12 @@
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Xunit;
 
 namespace Showdoku
 {
-	[TestClass]
 	public class ColumnTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Creating_a_column_should_throw_if_no_cells_are_provided()
 		{
 			// Arrange
@@ -23,7 +22,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_column_should_fail_if_fewer_than_nine_cells_are_provided()
 		{
 			// Arrange
@@ -51,7 +50,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_column_should_fail_if_more_than_nine_cells_are_provided()
 		{
 			// Arrange
@@ -81,7 +80,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Creating_a_column_should_fail_if_any_missing_cells_are_provided()
 		{
 			// Arrange
@@ -110,7 +109,7 @@ namespace Showdoku
 			act.Should().Throw<ArgumentException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void All_columns_should_contain_nine_cells()
 		{
 			// Arrange
@@ -124,7 +123,7 @@ namespace Showdoku
 			}
 		}
 
-		[TestMethod]
+		[Fact]
 		public void All_columns_should_contain_expected_cells()
 		{
 			// Arrange
@@ -223,7 +222,7 @@ namespace Showdoku
 			grid.Columns[8].Cells[8].Should().Be(grid.Cells[8, 8]);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_column_containing_only_solved_cells_should_be_classed_as_solved()
 		{
 			// Arrange
@@ -244,7 +243,7 @@ namespace Showdoku
 			grid.Columns[0].IsSolved().Should().BeTrue();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_column_containing_any_unsolved_cells_should_be_not_be_classed_as_solved()
 		{
 			// Arrange

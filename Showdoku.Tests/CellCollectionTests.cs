@@ -1,12 +1,11 @@
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Showdoku
 {
-	[TestClass]
 	public class CellCollectionTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Solved_cells_should_be_counted_correctly()
 		{
 			// Arrange
@@ -23,7 +22,7 @@ namespace Showdoku
 			grid.Blocks[0, 0].GetSolvedCellCount().Should().Be(3);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Pencil_marks_should_be_counted_correctly()
 		{
 			// Arrange

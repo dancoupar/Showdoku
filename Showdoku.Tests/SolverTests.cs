@@ -1,17 +1,16 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using Showdoku.SolvingTechniques;
+using Xunit;
 
 namespace Showdoku
 {
-	[TestClass]
 	public class SolverTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_easy_grid_a()
 		{
-			// Arrange			
+			// Arrange
 			Solver solver = new Solver(
 				new CrosshatchingTechnique()
 			);
@@ -26,7 +25,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_easy_grid_b()
 		{
 			// Arrange			
@@ -44,7 +43,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_medium_grid_a()
 		{
 			// Arrange			
@@ -63,7 +62,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}		
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_medium_grid_b()
 		{
 			// Arrange			
@@ -82,7 +81,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_medium_grid_c()
 		{
 			// Arrange			
@@ -101,7 +100,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}		
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_medium_grid_d()
 		{
 			// Arrange			
@@ -120,7 +119,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_hard_grid_a()
 		{
 			// Arrange			
@@ -140,7 +139,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_hard_grid_b()
 		{
 			// Arrange			
@@ -160,7 +159,7 @@ namespace Showdoku
 			AssertSolutionIsValid(grid);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Should_be_able_to_solve_worlds_hardest_grid()
 		{
 			// Arrange			

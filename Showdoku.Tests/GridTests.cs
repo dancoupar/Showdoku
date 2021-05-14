@@ -1,13 +1,12 @@
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
+using Xunit;
 
 namespace Showdoku
 {
-	[TestClass]
 	public class GridTests
 	{
-		[TestMethod]
+		[Fact]
 		public void A_grid_should_have_two_dimensions()
 		{
 			// Arrange
@@ -18,7 +17,7 @@ namespace Showdoku
 			grid.Cells.Rank.Should().Be(2);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_should_contain_nine_by_nine_cells()
 		{
 			// Arrange			
@@ -30,7 +29,7 @@ namespace Showdoku
 			grid.Cells.GetLength(1).Should().Be(9);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_should_contain_three_by_three_blocks()
 		{
 			// Arrange
@@ -42,7 +41,7 @@ namespace Showdoku
 			grid.Blocks.GetLength(1).Should().Be(3);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_should_contain_nine_rows()
 		{
 			// Arrange
@@ -53,7 +52,7 @@ namespace Showdoku
 			grid.Rows.Length.Should().Be(9);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_should_contain_nine_columns()
 		{
 			// Arrange			
@@ -64,7 +63,7 @@ namespace Showdoku
 			grid.Columns.Length.Should().Be(9);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_containing_only_solved_cells_should_be_classed_as_solved()
 		{
 			// Arrange
@@ -80,7 +79,7 @@ namespace Showdoku
 			grid.IsSolved().Should().BeTrue();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_grid_containing_any_unsolved_cells_should_be_classed_as_unsolved()
 		{
 			// Arrange

@@ -1,14 +1,13 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using System;
+using Xunit;
 
 namespace Showdoku.SolvingTechniques
 {
-	[TestClass]
 	public class LockedCandidatesTechniqueTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Technique_should_throw_if_no_grid_is_provided()
 		{
 			// Arrange
@@ -24,7 +23,7 @@ namespace Showdoku.SolvingTechniques
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_row_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
 		{
 			// Arrange
@@ -54,7 +53,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[8, 4].PencilMarks.Should().NotContain(6);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Pencil_marks_for_three_cells_within_a_block_restricted_to_one_row_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
 		{
 			// Arrange
@@ -112,7 +111,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[8, 4].PencilMarks.Should().NotContain(9);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_column_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_column()
 		{
 			// Arrange

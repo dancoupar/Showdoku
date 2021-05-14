@@ -1,14 +1,13 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using System;
+using Xunit;
 
 namespace Showdoku.SolvingTechniques
 {
-	[TestClass]
 	public class CrosshatchingTechniqueTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Technique_should_throw_if_no_grid_is_provided()
 		{
 			// Arrange
@@ -24,7 +23,7 @@ namespace Showdoku.SolvingTechniques
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_block()
 		{
 			// Arrange
@@ -47,7 +46,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[2, 2].PencilMarks.Should().NotContain(8);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_row()
 		{
 			// Arrange
@@ -70,7 +69,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[8, 0].PencilMarks.Should().NotContain(8);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_column()
 		{
 			// Arrange
@@ -93,7 +92,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[0, 8].PencilMarks.Should().NotContain(8);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void A_cell_where_all_but_one_number_appears_elsewhere_in_the_same_block_row_or_column_should_be_solved()
 		{
 			// Arrange

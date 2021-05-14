@@ -1,14 +1,13 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Showdoku.Setup;
 using System;
+using Xunit;
 
 namespace Showdoku.SolvingTechniques
 {
-	[TestClass]
 	public class SoleCandidateTechniqueTests
 	{
-		[TestMethod]
+		[Fact]
 		public void Technique_should_throw_if_no_grid_is_provided()
 		{
 			// Arrange
@@ -24,7 +23,7 @@ namespace Showdoku.SolvingTechniques
 			act.Should().Throw<ArgumentNullException>();
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Cells_within_a_block_that_have_a_unique_pencil_mark_should_be_solved()
 		{
 			// Arrange
@@ -62,7 +61,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[0, 7].Solution.Value.Should().Be(4);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Cells_within_a_row_that_have_a_unique_pencil_mark_should_be_solved()
 		{
 			// Arrange
@@ -99,7 +98,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 0].Solution.Value.Should().Be(6);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Cells_within_a_column_that_have_a_unique_pencil_mark_should_be_solved()
 		{
 			// Arrange
