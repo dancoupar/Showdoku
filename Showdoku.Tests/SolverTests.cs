@@ -8,7 +8,7 @@ namespace Showdoku
 	public class SolverTests
 	{
 		[Fact]
-		public void Should_be_able_to_solve_easy_grid_a()
+		public void Easy_grid_1_can_be_solved()
 		{
 			// Arrange
 			Solver solver = new Solver(
@@ -26,7 +26,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_easy_grid_b()
+		public void Easy_grid_2_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -44,7 +44,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_medium_grid_a()
+		public void Medium_grid_1_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -63,7 +63,7 @@ namespace Showdoku
 		}		
 
 		[Fact]
-		public void Should_be_able_to_solve_medium_grid_b()
+		public void Medium_grid_2_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -82,7 +82,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_medium_grid_c()
+		public void Medium_grid_3_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -101,7 +101,7 @@ namespace Showdoku
 		}		
 
 		[Fact]
-		public void Should_be_able_to_solve_medium_grid_d()
+		public void Medium_grid_4_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -120,7 +120,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_hard_grid_a()
+		public void Hard_grid_1_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -140,7 +140,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_hard_grid_b()
+		public void Hard_grid_2_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(
@@ -160,7 +160,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Should_be_able_to_solve_worlds_hardest_grid()
+		public void Worlds_hardest_grid_can_be_solved()
 		{
 			// Arrange			
 			Solver solver = new Solver(

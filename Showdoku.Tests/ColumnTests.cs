@@ -7,7 +7,7 @@ namespace Showdoku
 	public class ColumnTests
 	{
 		[Fact]
-		public void Creating_a_column_should_throw_if_no_cells_are_provided()
+		public void Creating_a_column_throws_if_no_cells_are_provided()
 		{
 			// Arrange
 			Column column;
@@ -23,11 +23,11 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_column_should_fail_if_fewer_than_nine_cells_are_provided()
+		public void Creating_a_column_throws_if_fewer_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Column column;
-			Grid grid = new Grid();			
+			Grid grid = new Grid();
 			Cell[] cells = new Cell[8]
 			{
 				new Cell(grid),
@@ -51,7 +51,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_column_should_fail_if_more_than_nine_cells_are_provided()
+		public void Creating_a_column_throws_if_more_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Column column;
@@ -81,7 +81,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_column_should_fail_if_any_missing_cells_are_provided()
+		public void Creating_a_column_throws_if_any_provided_cells_are_missing()
 		{
 			// Arrange
 			Column column;
@@ -97,7 +97,7 @@ namespace Showdoku
 				new Cell(grid),
 				new Cell(grid),
 				null
-			};			
+			};
 
 			// Act
 			Action act = () =>
@@ -110,7 +110,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_columns_should_contain_nine_cells()
+		public void All_columns_contain_nine_cells()
 		{
 			// Arrange
 			// Act
@@ -124,7 +124,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_columns_should_contain_expected_cells()
+		public void All_columns_contain_expected_cells()
 		{
 			// Arrange
 			// Act
@@ -223,7 +223,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_column_containing_only_solved_cells_should_be_classed_as_solved()
+		public void A_column_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -244,7 +244,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_column_containing_any_unsolved_cells_should_be_not_be_classed_as_solved()
+		public void A_column_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
 			Grid grid = new Grid();

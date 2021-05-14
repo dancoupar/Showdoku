@@ -6,7 +6,7 @@ namespace Showdoku
 	public class CellCollectionTests
 	{
 		[Fact]
-		public void Solved_cells_should_be_counted_correctly()
+		public void Solved_cells_are_counted_correctly()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -23,7 +23,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Pencil_marks_should_be_counted_correctly()
+		public void Pencil_marks_are_counted_correctly()
 		{
 			// Arrange
 			Grid grid = new Grid();

@@ -7,7 +7,7 @@ namespace Showdoku
 	public class GridTests
 	{
 		[Fact]
-		public void A_grid_should_have_two_dimensions()
+		public void A_grid_has_two_dimensions()
 		{
 			// Arrange
 			// Act
@@ -18,9 +18,9 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_should_contain_nine_by_nine_cells()
+		public void A_grid_contains_nine_by_nine_cells()
 		{
-			// Arrange			
+			// Arrange
 			// Act
 			Grid grid = new Grid();
 
@@ -30,7 +30,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_should_contain_three_by_three_blocks()
+		public void A_grid_contains_three_by_three_blocks()
 		{
 			// Arrange
 			// Act
@@ -42,7 +42,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_should_contain_nine_rows()
+		public void A_grid_contains_nine_rows()
 		{
 			// Arrange
 			// Act
@@ -53,7 +53,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_should_contain_nine_columns()
+		public void A_grid_contains_nine_columns()
 		{
 			// Arrange			
 			// Act
@@ -64,7 +64,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_containing_only_solved_cells_should_be_classed_as_solved()
+		public void A_grid_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
 			// Act
@@ -80,7 +80,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_grid_containing_any_unsolved_cells_should_be_classed_as_unsolved()
+		public void A_grid_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithSolvedGrid();

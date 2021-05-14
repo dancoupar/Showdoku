@@ -7,7 +7,7 @@ namespace Showdoku
 	public class RowTests
 	{
 		[Fact]
-		public void Creating_a_row_should_throw_if_no_cells_are_provided()
+		public void Creating_a_row_throws_if_no_cells_are_provided()
 		{
 			// Arrange
 			Row row;
@@ -23,7 +23,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_row_should_fail_if_fewer_than_nine_cells_are_provided()
+		public void Creating_a_row_throws_if_fewer_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Row row;
@@ -51,7 +51,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_row_should_fail_if_more_than_nine_cells_are_provided()
+		public void Creating_a_row_throws_if_more_than_nine_cells_are_provided()
 		{
 			// Arrange
 			Row row;
@@ -81,7 +81,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_row_should_fail_if_any_missing_cells_are_provided()
+		public void Creating_a_row_throws_if_any_provided_cells_are_missing()
 		{
 			// Arrange
 			Row row;
@@ -110,7 +110,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_rows_should_contain_nine_cells()
+		public void All_rows_contain_nine_cells()
 		{
 			// Arrange
 			// Act
@@ -124,7 +124,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_rows_should_contain_expected_cells()
+		public void All_rows_contain_expected_cells()
 		{
 			// Arrange
 			// Act
@@ -223,7 +223,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_row_containing_only_solved_cells_should_be_classed_as_solved()
+		public void A_row_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -244,7 +244,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_row_containing_any_unsolved_cells_should_not_be_classed_as_solved()
+		public void A_row_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
 			Grid grid = new Grid();

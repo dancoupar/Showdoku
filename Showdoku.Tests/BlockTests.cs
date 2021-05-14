@@ -8,7 +8,7 @@ namespace Showdoku
 	public class BlockTests
 	{
 		[Fact]
-		public void Creating_a_block_should_throw_if_no_cells_are_provided()
+		public void Creating_a_block_throws_if_no_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -24,7 +24,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_block_should_fail_if_fewer_than_three_rows_of_cells_are_provided()
+		public void Creating_a_block_throws_if_fewer_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -42,7 +42,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_block_should_fail_if_more_than_three_rows_of_cells_are_provided()
+		public void Creating_a_block_throws_if_more_than_three_rows_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -60,7 +60,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_row_should_fail_if_fewer_than_three_columns_of_cells_are_provided()
+		public void Creating_a_row_throws_if_fewer_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -78,7 +78,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_row_should_fail_if_more_than_three_columns_of_cells_are_provided()
+		public void Creating_a_row_throws_if_more_than_three_columns_of_cells_are_provided()
 		{
 			// Arrange
 			Block block;
@@ -96,7 +96,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Creating_a_block_should_fail_if_any_missing_cells_are_provided()
+		public void Creating_a_block_throws_if_any_provided_cells_are_missing()
 		{
 			// Arrange
 			Block block;
@@ -123,7 +123,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_blocks_should_have_two_dimensions()
+		public void All_blocks_have_two_dimensions()
 		{
 			// Arrange
 			// Act
@@ -137,7 +137,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_blocks_should_contain_three_by_three_cells()
+		public void All_blocks_contain_three_by_three_cells()
 		{
 			// Arrange
 			// Act
@@ -152,7 +152,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void All_blocks_should_contain_expected_cells()
+		public void All_blocks_contain_expected_cells()
 		{
 			// Arrange
 			// Act
@@ -251,7 +251,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_block_containing_only_solved_cells_should_be_classed_as_solved()
+		public void A_block_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -272,7 +272,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void A_block_containing_any_unsolved_cells_should_be_classed_as_unsolved()
+		public void A_block_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -292,7 +292,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_no_cell_is_provided()
+		public void Retrieving_x_index_of_contained_cell_throws_if_no_cell_is_provided()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -308,7 +308,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_no_cell_is_provided()
+		public void Retrieving_y_index_of_contained_cell_throws_if_no_cell_is_provided()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -324,7 +324,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Attempting_to_retrieve_x_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
+		public void Retrieving_x_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -340,7 +340,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Attempting_to_retrieve_y_index_of_contained_cell_should_throw_if_cell_is_not_contained_in_block()
+		public void Retrieving_y_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -356,7 +356,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Correct_x_index_of_contained_cell_should_be_returned()
+		public void Correct_x_index_of_contained_cell_is_returned()
 		{
 			// Arrange
 			Grid grid = new Grid();
@@ -369,7 +369,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Correct_y_index_of_contained_cell_should_be_returned()
+		public void Correct_y_index_of_contained_cell_is_returned()
 		{
 			// Arrange
 			Grid grid = new Grid();
