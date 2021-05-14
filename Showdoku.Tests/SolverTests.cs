@@ -23,7 +23,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -41,7 +41,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -60,7 +60,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}		
 
 		[TestMethod]
@@ -79,7 +79,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -98,7 +98,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}		
 
 		[TestMethod]
@@ -117,7 +117,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -137,7 +137,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -157,7 +157,7 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
 		[TestMethod]
@@ -177,10 +177,10 @@ namespace Showdoku
 
 			// Assert
 			result.Should().BeTrue();
-			this.AssertSolutionIsValid(grid);
+			AssertSolutionIsValid(grid);
 		}
 
-		private void AssertSolutionIsValid(Grid grid)
+		private static void AssertSolutionIsValid(Grid grid)
 		{
 			for (int x = 0; x < 9; x++)
 			{

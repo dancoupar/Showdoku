@@ -52,19 +52,19 @@ namespace Showdoku.SolvingTechniques
 						if (cellsWithPencilMark.All((c) => block.YIndexOf(c) == block.YIndexOf(cellsWithPencilMark.First())))
 						{
 							// All cells are in the same row
-							this.RemovePencilMarkFromAllCellsNotInBlock(grid.GetRowContainingCell(cellsWithPencilMark.First()), pencilMark, block);
+							RemovePencilMarkFromAllCellsNotInBlock(grid.GetRowContainingCell(cellsWithPencilMark.First()), pencilMark, block);
 						}
 						else if (cellsWithPencilMark.All((c) => block.XIndexOf(c) == block.XIndexOf(cellsWithPencilMark.First())))
 						{
 							// All cells are in the same column
-							this.RemovePencilMarkFromAllCellsNotInBlock(grid.GetColumnContainingCell(cellsWithPencilMark.First()), pencilMark, block);
+							RemovePencilMarkFromAllCellsNotInBlock(grid.GetColumnContainingCell(cellsWithPencilMark.First()), pencilMark, block);
 						}
 					}
 				}
 			}
 		}
 
-		private void RemovePencilMarkFromAllCellsNotInBlock(CellCollection cells, int pencilMark, Block block)
+		private static void RemovePencilMarkFromAllCellsNotInBlock(CellCollection cells, int pencilMark, Block block)
 		{
 			foreach (Cell cell in cells.Where((c) => !c.IsSolved()))
 			{

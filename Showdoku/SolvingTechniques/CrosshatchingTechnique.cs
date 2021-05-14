@@ -41,12 +41,12 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!cell.IsSolved())
 				{
-					this.ApplyToCell(grid, cell);
+					ApplyToCell(grid, cell);
 				}
 			}
 		}
 
-		private void ApplyToCell(Grid grid, Cell cell)
+		private static void ApplyToCell(Grid grid, Cell cell)
 		{
 			Block containingBlock = grid.GetBlockContainingCell(cell);
 			Row containingRow = grid.GetRowContainingCell(cell);

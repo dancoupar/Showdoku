@@ -54,7 +54,7 @@ namespace Showdoku
 			{
 				int startingPenilMarkCount = grid.GetPencilMarkCount();
 				this.ApplyTechniques(grid);
-				progressMade = this.ProgressMade(grid, startingPenilMarkCount);
+				progressMade = ProgressMade(grid, startingPenilMarkCount);
 			}
 			while (progressMade);
 
@@ -81,7 +81,7 @@ namespace Showdoku
 				{
 					int startingPencilMarkCount = grid.GetPencilMarkCount();
 					technique.Apply(grid);
-					progressMade = this.ProgressMade(grid, startingPencilMarkCount);
+					progressMade = ProgressMade(grid, startingPencilMarkCount);
 
 					if (progressMade && technique.RestartSolvingProcessOnSuccess)
 					{
@@ -92,7 +92,7 @@ namespace Showdoku
 			}			
 		}
 
-		private bool ProgressMade(Grid grid, int startingPencilMarkCount)
+		private static bool ProgressMade(Grid grid, int startingPencilMarkCount)
 		{
 			return grid.GetPencilMarkCount() < startingPencilMarkCount;
 		}

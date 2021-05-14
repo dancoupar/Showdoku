@@ -222,18 +222,28 @@ namespace Showdoku
 		/// Returns a string representation of the grid.
 		/// </summary>
 		public override string ToString()
-		{
+		{		
 			StringBuilder builder = new StringBuilder();
+
+			void addLineBreak()
+			{
+				for (int i = 0; i < 31; i++)
+				{
+					builder.Append('—');
+				}
+
+				builder.AppendLine();
+			};
 
 			for (int y1 = 0; y1 < 3; y1++)
 			{
-				builder.AppendLine("———————————————————————————————");
+				addLineBreak();
 
 				for (int y2 = 0; y2 < 3; y2++)
 				{
 					for (int x1 = 0; x1 < 3; x1++)
 					{
-						builder.Append("|");
+						builder.Append('|');
 
 						for (int x2 = 0; x2 < 3; x2++)
 						{
@@ -254,7 +264,7 @@ namespace Showdoku
 				}
 			}
 
-			builder.AppendLine("———————————————————————————————");
+			addLineBreak();
 
 			return builder.ToString();
 		}

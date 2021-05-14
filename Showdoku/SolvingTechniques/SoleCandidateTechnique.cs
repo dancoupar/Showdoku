@@ -41,7 +41,7 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!cell.IsSolved())
 				{
-					if (this.ApplyToCell(grid, cell))
+					if (ApplyToCell(grid, cell))
 					{
 						// This technique stops once it makes progress,
 						// in order for the more basic techniques to be
@@ -53,7 +53,7 @@ namespace Showdoku.SolvingTechniques
 			}
 		}
 
-		private bool ApplyToCell(Grid grid, Cell cell)
+		private static bool ApplyToCell(Grid grid, Cell cell)
 		{
 			Block containingBlock = grid.GetBlockContainingCell(cell);
 			Row containingRow = grid.GetRowContainingCell(cell);
@@ -62,7 +62,7 @@ namespace Showdoku.SolvingTechniques
 			foreach (int pencilMark in cell.PencilMarks)
 			{
 				// Is this the only cell in its block with this pencil mark?
-				if (this.IsOnlyCellWithPencilMark(cell, containingBlock, pencilMark))
+				if (IsOnlyCellWithPencilMark(cell, containingBlock, pencilMark))
 				{
 					// If so, we can solve it
 					cell.Solve(pencilMark);
@@ -70,7 +70,7 @@ namespace Showdoku.SolvingTechniques
 				}
 
 				// Is this the only cell in its row with this pencil mark?
-				if (this.IsOnlyCellWithPencilMark(cell, containingRow, pencilMark))
+				if (IsOnlyCellWithPencilMark(cell, containingRow, pencilMark))
 				{
 					// If so, we can solve it
 					cell.Solve(pencilMark);
@@ -78,7 +78,7 @@ namespace Showdoku.SolvingTechniques
 				}
 
 				// Is this the only cell in its column with this pencil mark?
-				if (this.IsOnlyCellWithPencilMark(cell, containingColumn, pencilMark))
+				if (IsOnlyCellWithPencilMark(cell, containingColumn, pencilMark))
 				{
 					// If so, we can solve it
 					cell.Solve(pencilMark);
@@ -89,7 +89,7 @@ namespace Showdoku.SolvingTechniques
 			return false;
 		}
 
-		private bool IsOnlyCellWithPencilMark(Cell cell, CellCollection container, int pencilMark)
+		private static bool IsOnlyCellWithPencilMark(Cell cell, CellCollection container, int pencilMark)
 		{
 			foreach (Cell otherCell in container.Where((c) => c != cell))
 			{
