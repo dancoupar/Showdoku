@@ -27,8 +27,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Column column;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[8]
+			var grid = new Grid();
+			var cells = new Cell[8]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -55,8 +55,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Column column;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[10]
+			var grid = new Grid();
+			var cells = new Cell[10]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -85,8 +85,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Column column;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[9]
+			var grid = new Grid();
+			var cells = new Cell[9]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -114,7 +114,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			foreach (Column column in grid.Columns)
@@ -128,7 +128,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Columns[0].Cells[0].Should().Be(grid.Cells[0, 0]);
@@ -247,7 +247,7 @@ namespace Showdoku
 		public void A_column_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);

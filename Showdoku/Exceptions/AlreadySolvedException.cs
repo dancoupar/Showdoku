@@ -38,7 +38,7 @@ namespace Showdoku.Exceptions
 		/// Thrown if the class name is null or System.Exception.HResult is zero (0).
 		/// </exception>
 		public AlreadySolvedException(SerializationInfo info, StreamingContext context) : base(info, context)
-		{			
+		{
 		}
 	}
 }

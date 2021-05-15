@@ -11,7 +11,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Cells.Rank.Should().Be(2);
@@ -22,7 +22,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Cells.GetLength(0).Should().Be(9);
@@ -34,7 +34,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Blocks.GetLength(0).Should().Be(3);
@@ -46,7 +46,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Rows.Length.Should().Be(9);
@@ -57,7 +57,7 @@ namespace Showdoku
 		{
 			// Arrange			
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Columns.Length.Should().Be(9);
@@ -90,6 +90,75 @@ namespace Showdoku
 
 			// Assert
 			grid.IsSolved().Should().BeFalse();
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(1)]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		[InlineData(5)]
+		[InlineData(6)]
+		[InlineData(7)]
+		[InlineData(8)]
+		public void A_cells_encompassing_block_can_be_correctly_determined(int index)
+		{
+			// Arrange
+			var grid = new Grid();
+			Cell cell = grid.Cells[index, index];
+
+			// Act
+			Block block = grid.GetBlockContainingCell(cell);
+
+			// Assert
+			block.Should().Equal(grid.Blocks[index / 3, index / 3]);
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(1)]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		[InlineData(5)]
+		[InlineData(6)]
+		[InlineData(7)]
+		[InlineData(8)]
+		public void A_cells_encompassing_row_can_be_correctly_determined(int index)
+		{
+			// Arrange
+			var grid = new Grid();
+			Cell cell = grid.Cells[index, index];
+
+			// Act
+			Row row = grid.GetRowContainingCell(cell);
+
+			// Assert
+			row.Should().Equal(grid.Rows[index]);
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(1)]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		[InlineData(5)]
+		[InlineData(6)]
+		[InlineData(7)]
+		[InlineData(8)]
+		public void A_cells_encompassing_column_can_be_correctly_determined(int index)
+		{
+			// Arrange
+			var grid = new Grid();
+			Cell cell = grid.Cells[index, index];
+
+			// Act
+			Column column = grid.GetColumnContainingCell(cell);
+
+			// Assert
+			column.Should().Equal(grid.Columns[index]);
 		}
 	}
 }

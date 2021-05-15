@@ -8,10 +8,10 @@ namespace Showdoku.SolvingTechniques
 	public class LockedCandidatesTechniqueTests
 	{
 		[Fact]
-		public void Technique_should_throw_if_no_grid_is_provided()
+		public void Technique_throws_if_no_grid_is_provided()
 		{
 			// Arrange
-			LockedCandidatesTechnique cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesTechnique();
 
 			// Act
 			Action act = () =>
@@ -24,7 +24,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_row_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
+		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_row_eliminates_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
@@ -39,7 +39,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 4].RemovePencilMark(6);
 			grid.Cells[4, 5].RemovePencilMark(6);
 
-			LockedCandidatesTechnique cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesTechnique();
 
 			// Act
 			cut.Apply(grid);
@@ -54,7 +54,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Pencil_marks_for_three_cells_within_a_block_restricted_to_one_row_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
+		public void Pencil_marks_for_three_cells_within_a_block_restricted_to_one_row_eliminates_pencil_marks_from_other_cells_outside_the_block_in_the_same_row()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
@@ -112,7 +112,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_column_should_eliminate_pencil_marks_from_other_cells_outside_the_block_in_the_same_column()
+		public void Pencil_marks_for_two_cells_within_a_block_restricted_to_one_column_eliminates_pencil_marks_from_other_cells_outside_the_block_in_the_same_column()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
@@ -127,7 +127,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 4].RemovePencilMark(6);
 			grid.Cells[5, 4].RemovePencilMark(6);
 
-			LockedCandidatesTechnique cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesTechnique();
 
 			// Act
 			cut.Apply(grid);

@@ -11,7 +11,7 @@ namespace Showdoku
 		public void Easy_grid_1_can_be_solved()
 		{
 			// Arrange
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique()
 			);
 
@@ -29,7 +29,7 @@ namespace Showdoku
 		public void Easy_grid_2_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique()
 			);
 
@@ -47,7 +47,7 @@ namespace Showdoku
 		public void Medium_grid_1_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique()
 			);
@@ -60,13 +60,13 @@ namespace Showdoku
 			// Assert
 			result.Should().BeTrue();
 			AssertSolutionIsValid(grid);
-		}		
+		}
 
 		[Fact]
 		public void Medium_grid_2_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique()
 			);
@@ -85,7 +85,7 @@ namespace Showdoku
 		public void Medium_grid_3_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique()
 			);
@@ -98,13 +98,13 @@ namespace Showdoku
 			// Assert
 			result.Should().BeTrue();
 			AssertSolutionIsValid(grid);
-		}		
+		}
 
 		[Fact]
 		public void Medium_grid_4_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique()
 			);
@@ -123,7 +123,7 @@ namespace Showdoku
 		public void Hard_grid_1_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
 				new LockedCandidatesTechnique()
@@ -143,7 +143,7 @@ namespace Showdoku
 		public void Hard_grid_2_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
 				new LockedCandidatesTechnique()
@@ -163,7 +163,7 @@ namespace Showdoku
 		public void Worlds_hardest_grid_can_be_solved()
 		{
 			// Arrange			
-			Solver solver = new Solver(
+			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
 				new LockedCandidatesTechnique()

@@ -89,7 +89,7 @@ namespace Showdoku
 					}
 
 				} while (progressMade);
-			}			
+			}
 		}
 
 		private static bool ProgressMade(Grid grid, int startingPencilMarkCount)

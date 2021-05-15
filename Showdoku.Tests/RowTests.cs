@@ -27,8 +27,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Row row;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[8]
+			var grid = new Grid();
+			var cells = new Cell[8]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -55,8 +55,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Row row;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[10]
+			var grid = new Grid();
+			var cells = new Cell[10]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -85,8 +85,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Row row;
-			Grid grid = new Grid();
-			Cell[] cells = new Cell[9]
+			var grid = new Grid();
+			var cells = new Cell[9]
 			{
 				new Cell(grid),
 				new Cell(grid),
@@ -114,7 +114,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			foreach (Row row in grid.Rows)
@@ -128,7 +128,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Rows[0].Cells[0].Should().Be(grid.Cells[0, 0]);
@@ -226,7 +226,7 @@ namespace Showdoku
 		public void A_row_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);
@@ -247,7 +247,7 @@ namespace Showdoku
 		public void A_row_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);
@@ -258,7 +258,7 @@ namespace Showdoku
 			grid.Cells[5, 0].Solve(6);
 			grid.Cells[6, 0].Solve(7);
 			grid.Cells[7, 0].Solve(8);
-			
+
 			// Assert
 			grid.Rows[0].IsSolved().Should().BeFalse();
 		}

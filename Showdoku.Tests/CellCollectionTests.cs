@@ -9,7 +9,7 @@ namespace Showdoku
 		public void Solved_cells_are_counted_correctly()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);
@@ -26,7 +26,7 @@ namespace Showdoku
 		public void Pencil_marks_are_counted_correctly()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].RemovePencilMark(1);

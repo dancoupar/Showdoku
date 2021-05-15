@@ -33,7 +33,7 @@ namespace Showdoku
 			{
 				for (int x1 = 0; x1 < 3; x1++)
 				{
-					Cell[,] blockCells = new Cell[3, 3];
+					var blockCells = new Cell[3, 3];
 
 					for (int y2 = 0; y2 < 3; y2++)
 					{
@@ -49,7 +49,7 @@ namespace Showdoku
 
 			for (int y = 0; y < 9; y++)
 			{
-				Cell[] rowCells = new Cell[9];
+				var rowCells = new Cell[9];
 
 				for (int x = 0; x < 9; x++)
 				{
@@ -61,7 +61,7 @@ namespace Showdoku
 
 			for (int x = 0; x < 9; x++)
 			{
-				Cell[] columnCells = new Cell[9];
+				var columnCells = new Cell[9];
 
 				for (int y = 0; y < 9; y++)
 				{
@@ -199,7 +199,7 @@ namespace Showdoku
 			}
 
 			return column;
-		}		
+		}
 
 		/// <summary>
 		/// Returns an enumerator that iterates through each of the cells within this grid.
@@ -222,8 +222,8 @@ namespace Showdoku
 		/// Returns a string representation of the grid.
 		/// </summary>
 		public override string ToString()
-		{		
-			StringBuilder builder = new StringBuilder();
+		{
+			var builder = new StringBuilder();
 
 			void addLineBreak()
 			{

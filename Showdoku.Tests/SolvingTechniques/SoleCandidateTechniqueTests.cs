@@ -8,10 +8,10 @@ namespace Showdoku.SolvingTechniques
 	public class SoleCandidateTechniqueTests
 	{
 		[Fact]
-		public void Technique_should_throw_if_no_grid_is_provided()
+		public void Technique_throws_if_no_grid_is_provided()
 		{
 			// Arrange
-			SoleCandidateTechnique cut = new SoleCandidateTechnique();
+			var cut = new SoleCandidateTechnique();
 
 			// Act
 			Action act = () =>
@@ -24,7 +24,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Cells_within_a_block_that_have_a_unique_pencil_mark_should_be_solved()
+		public void Cells_within_a_block_that_have_a_unique_pencil_mark_can_be_solved()
 		{
 			// Arrange
 
@@ -51,7 +51,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[1, 8].RemovePencilMark(4);
 			grid.Cells[2, 8].RemovePencilMark(4);
 
-			SoleCandidateTechnique cut = new SoleCandidateTechnique();
+			var cut = new SoleCandidateTechnique();
 
 			// Act
 			cut.Apply(grid);
@@ -62,7 +62,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Cells_within_a_row_that_have_a_unique_pencil_mark_should_be_solved()
+		public void Cells_within_a_row_that_have_a_unique_pencil_mark_can_be_solved()
 		{
 			// Arrange
 
@@ -86,9 +86,9 @@ namespace Showdoku.SolvingTechniques
 			// elsewhere outside the block in columns 3 and 5.
 
 			grid.Cells[3, 0].RemovePencilMark(6);
-			grid.Cells[5, 0].RemovePencilMark(6);	
+			grid.Cells[5, 0].RemovePencilMark(6);
 
-			SoleCandidateTechnique cut = new SoleCandidateTechnique();
+			var cut = new SoleCandidateTechnique();
 
 			// Act
 			cut.Apply(grid);
@@ -99,7 +99,7 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void Cells_within_a_column_that_have_a_unique_pencil_mark_should_be_solved()
+		public void Cells_within_a_column_that_have_a_unique_pencil_mark_can_be_solved()
 		{
 			// Arrange
 
@@ -129,7 +129,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 5].RemovePencilMark(5);
 			grid.Cells[4, 7].RemovePencilMark(5);
 
-			SoleCandidateTechnique cut = new SoleCandidateTechnique();
+			var cut = new SoleCandidateTechnique();
 
 			// Act
 			cut.Apply(grid);

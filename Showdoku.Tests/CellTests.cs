@@ -13,7 +13,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Cell cell = new Cell(new Grid());
+			var cell = new Cell(new Grid());
 
 			// Assert
 			cell.PencilMarks.Count.Should().Be(9);
@@ -33,7 +33,7 @@ namespace Showdoku
 		public void A_solved_cell_has_no_pencil_marks()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -47,7 +47,7 @@ namespace Showdoku
 		public void A_cell_with_a_solution_is_solved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -63,7 +63,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Assert
@@ -135,7 +135,7 @@ namespace Showdoku
 		public void Solving_throws_if_the_cell_is_already_solved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act			
@@ -153,7 +153,7 @@ namespace Showdoku
 		public void Solving_throws_if_the_solution_is_less_than_one()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -170,7 +170,7 @@ namespace Showdoku
 		public void Solving_throws_if_the_solution_is_more_than_nine()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -182,7 +182,7 @@ namespace Showdoku
 			// Assert
 			act.Should().Throw<ArgumentOutOfRangeException>();
 		}
-		
+
 		[Theory]
 		[InlineData(1)]
 		[InlineData(2)]
@@ -195,7 +195,7 @@ namespace Showdoku
 		public void Solving_allows_all_values_between_one_and_nine(int solution)
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -266,7 +266,7 @@ namespace Showdoku
 		public void Solving_throws_if_the_solution_is_not_a_pencil_mark()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -285,7 +285,7 @@ namespace Showdoku
 		public void Solving_throws_if_the_solution_is_a_pencil_mark()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -297,13 +297,13 @@ namespace Showdoku
 			// Assert
 			cell.PencilMarks.Should().Contain(5);
 			act.Should().NotThrow();
-		}		
-		
+		}
+
 		[Fact]
 		public void Removing_a_pencil_mark_removes_it_from_the_list_of_pencil_marks()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -312,12 +312,12 @@ namespace Showdoku
 			// Assert
 			cell.PencilMarks.Should().NotContain(5);
 		}
-		
+
 		[Fact]
 		public void Removing_an_already_removed_pencil_mark_has_no_effect_on_the_list_of_pencil_marks()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -332,7 +332,7 @@ namespace Showdoku
 		public void Removing_a_pencil_mark_throws_if_the_specified_value_is_less_than_one()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -349,7 +349,7 @@ namespace Showdoku
 		public void Removing_a_pencil_mark_throws_if_the_specified_value_is_more_than_nine()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -374,7 +374,7 @@ namespace Showdoku
 		public void Removing_a_pencil_mark_between_one_and_nine_throws(int pencilMark)
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -391,7 +391,7 @@ namespace Showdoku
 		public void Removing_all_but_one_pencil_mark_solves_the_cell()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -413,7 +413,7 @@ namespace Showdoku
 		public void Removing_a_pencil_mark_on_an_already_solved_cell_throws()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
@@ -432,7 +432,7 @@ namespace Showdoku
 		public void A_solved_cell_that_has_been_emptied_is_no_longer_classed_as_solved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 			cell.Solve(1);
 
@@ -447,7 +447,7 @@ namespace Showdoku
 		public void A_solved_cell_that_has_been_emptied_has_nine_pencil_marks()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 			Cell cell = grid.Cells[0, 0];
 			cell.Solve(1);
 

@@ -28,8 +28,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Block block;
-			Grid grid = new Grid();
-			Cell[,] cells = new Cell[3, 2];
+			var grid = new Grid();
+			var cells = new Cell[3, 2];
 
 			// Act
 			Action act = () =>
@@ -46,8 +46,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Block block;
-			Grid grid = new Grid();
-			Cell[,] cells = new Cell[3, 4];
+			var grid = new Grid();
+			var cells = new Cell[3, 4];
 
 			// Act
 			Action act = () =>
@@ -64,8 +64,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Block block;
-			Grid grid = new Grid();
-			Cell[,] cells = new Cell[2, 3];
+			var grid = new Grid();
+			var cells = new Cell[2, 3];
 
 			// Act
 			Action act = () =>
@@ -82,8 +82,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Block block;
-			Grid grid = new Grid();
-			Cell[,] cells = new Cell[4, 3];
+			var grid = new Grid();
+			var cells = new Cell[4, 3];
 
 			// Act
 			Action act = () =>
@@ -100,8 +100,8 @@ namespace Showdoku
 		{
 			// Arrange
 			Block block;
-			Grid grid = new Grid();
-			Cell[,] cells = new Cell[3, 3];
+			var grid = new Grid();
+			var cells = new Cell[3, 3];
 			cells[0, 0] = new Cell(grid);
 			cells[1, 0] = new Cell(grid);
 			cells[2, 0] = new Cell(grid);
@@ -141,7 +141,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			foreach (Block block in grid.Blocks)
@@ -156,7 +156,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			grid.Blocks[0, 0].Cells[0, 0].Should().Be(grid.Cells[0, 0]);
@@ -254,7 +254,7 @@ namespace Showdoku
 		public void A_block_containing_only_solved_cells_is_solved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);
@@ -275,7 +275,7 @@ namespace Showdoku
 		public void A_block_containing_any_unsolved_cells_is_unsolved()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			grid.Cells[0, 0].Solve(1);
@@ -295,7 +295,7 @@ namespace Showdoku
 		public void Retrieving_x_index_of_contained_cell_throws_if_no_cell_is_provided()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			Action act = () =>
@@ -311,7 +311,7 @@ namespace Showdoku
 		public void Retrieving_y_index_of_contained_cell_throws_if_no_cell_is_provided()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			Action act = () =>
@@ -327,7 +327,7 @@ namespace Showdoku
 		public void Retrieving_x_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			Action act = () =>
@@ -343,7 +343,7 @@ namespace Showdoku
 		public void Retrieving_y_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			Action act = () =>
@@ -359,7 +359,7 @@ namespace Showdoku
 		public void Correct_x_index_of_contained_cell_is_returned()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			int result = grid.Blocks[1, 1].XIndexOf(grid.Cells[3, 4]);
@@ -372,7 +372,7 @@ namespace Showdoku
 		public void Correct_y_index_of_contained_cell_is_returned()
 		{
 			// Arrange
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Act
 			int result = grid.Blocks[2, 2].YIndexOf(grid.Cells[7, 8]);

@@ -8,10 +8,10 @@ namespace Showdoku.SolvingTechniques
 	public class CrosshatchingTechniqueTests
 	{
 		[Fact]
-		public void Technique_should_throw_if_no_grid_is_provided()
+		public void Technique_throws_if_no_grid_is_provided()
 		{
 			// Arrange
-			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+			var cut = new CrosshatchingTechnique();
 
 			// Act
 			Action act = () =>
@@ -24,76 +24,67 @@ namespace Showdoku.SolvingTechniques
 		}
 
 		[Fact]
-		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_block()
+		public void The_solution_of_a_cell_does_not_appear_anywhere_within_the_encompassing_block_as_a_pencil_mark()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.Cells[0, 0].Solve(8);
-			
-			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+			Cell solvedCell = grid.Cells[0, 0];
+			solvedCell.Solve(8);
+
+			var cut = new CrosshatchingTechnique();
 
 			// Act
 			cut.Apply(grid);
 
-			// Assert
-			grid.Cells[1, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[2, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 1].PencilMarks.Should().NotContain(8);
-			grid.Cells[1, 1].PencilMarks.Should().NotContain(8);
-			grid.Cells[2, 1].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 2].PencilMarks.Should().NotContain(8);
-			grid.Cells[1, 2].PencilMarks.Should().NotContain(8);
-			grid.Cells[2, 2].PencilMarks.Should().NotContain(8);
+			// Assert			
+			foreach (var cell in grid.GetBlockContainingCell(solvedCell))
+			{
+				cell.PencilMarks.Should().NotContain(8);
+			}
 		}
 
 		[Fact]
-		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_row()
+		public void The_solution_of_a_cell_does_not_appear_anywhere_within_the_encompassing_row_as_a_pencil_mark()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.Cells[0, 0].Solve(8);
+			Cell solvedCell = grid.Cells[0, 0];
+			solvedCell.Solve(8);
 
-			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+			var cut = new CrosshatchingTechnique();
 
 			// Act
 			cut.Apply(grid);
 
-			// Assert
-			grid.Cells[1, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[2, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[3, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[4, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[5, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[6, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[7, 0].PencilMarks.Should().NotContain(8);
-			grid.Cells[8, 0].PencilMarks.Should().NotContain(8);
+			// Assert			
+			foreach (var cell in grid.GetRowContainingCell(solvedCell))
+			{
+				cell.PencilMarks.Should().NotContain(8);
+			}
 		}
 
 		[Fact]
-		public void The_solution_of_a_cell_should_not_be_a_pencil_mark_elsewhere_in_the_same_column()
+		public void The_solution_of_a_cell_does_not_appear_anywhere_within_the_encompassing_column_as_a_pencil_mark()
 		{
 			// Arrange
 			Grid grid = new GridBuilder().WithEmptyGrid();
-			grid.Cells[0, 0].Solve(8);
+			Cell solvedCell = grid.Cells[0, 0];
+			solvedCell.Solve(8);
 
-			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+			var cut = new CrosshatchingTechnique();
 
 			// Act
 			cut.Apply(grid);
 
-			// Assert
-			grid.Cells[0, 1].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 2].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 3].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 4].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 5].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 6].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 7].PencilMarks.Should().NotContain(8);
-			grid.Cells[0, 8].PencilMarks.Should().NotContain(8);
+			// Assert			
+			foreach (var cell in grid.GetColumnContainingCell(solvedCell))
+			{
+				cell.PencilMarks.Should().NotContain(8);
+			}
 		}
 
 		[Fact]
-		public void A_cell_where_all_but_one_number_appears_elsewhere_in_the_same_block_row_or_column_should_be_solved()
+		public void A_cell_where_all_but_one_number_appears_elsewhere_in_the_same_block_row_or_column_can_be_solved()
 		{
 			// Arrange
 
@@ -109,8 +100,8 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[2, 5].Solve(9);
 			grid.Cells[8, 5].Solve(7);
 			grid.Cells[5, 7].Solve(3);
-						
-			CrosshatchingTechnique cut = new CrosshatchingTechnique();
+
+			var cut = new CrosshatchingTechnique();
 
 			// Act
 			cut.Apply(grid);

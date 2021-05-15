@@ -28,14 +28,14 @@
 
 			// Row 1: 1,2,3,4,5,6,7,8,9
 			for (int x = 0; x < 9; x++)
-			{				
+			{
 				int solution = x + 1;
 				this.grid.Cells[x, 0].Solve(solution);
 			}
 
 			// Row 2: 4,5,6,7,8,9,1,2,3
 			for (int x = 0; x < 9; x++)
-			{				
+			{
 				int solution = x < 6 ? x + 4 : x - 5;
 				this.grid.Cells[x, 1].Solve(solution);
 			}
@@ -87,7 +87,7 @@
 			{
 				int solution = x < 1 ? x + 9 : x;
 				this.grid.Cells[x, 8].Solve(solution);
-			}			
+			}
 
 			return this;
 		}
@@ -134,7 +134,7 @@
 			grid.Cells[0, 8].Solve(1);
 			grid.Cells[4, 8].Solve(2);
 			grid.Cells[8, 8].Solve(3);
-			
+
 			return this;
 		}
 
@@ -215,7 +215,7 @@
 			grid.Cells[8, 6].Solve(9);
 			grid.Cells[0, 7].Solve(7);
 			grid.Cells[2, 7].Solve(4);
-			grid.Cells[3, 7].Solve(5);			
+			grid.Cells[3, 7].Solve(5);
 			grid.Cells[0, 8].Solve(2);
 			grid.Cells[5, 8].Solve(4);
 
@@ -261,7 +261,7 @@
 			grid.Cells[7, 8].Solve(8);
 
 			return this;
-		}		
+		}
 
 		public GridBuilder WithMediumGrid_C()
 		{
@@ -372,7 +372,7 @@
 			grid.Cells[5, 8].Solve(7);
 
 			return this;
-		}		
+		}
 
 		public GridBuilder WithHardGrid_B()
 		{
@@ -435,7 +435,7 @@
 			grid.Cells[7, 7].Solve(1);
 			grid.Cells[1, 8].Solve(9);
 			grid.Cells[6, 8].Solve(4);
-			
+
 			return this;
 		}
 

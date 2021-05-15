@@ -92,7 +92,7 @@ namespace Showdoku
 		/// True if the proposed solution is valid, otherwise false.
 		/// </returns>
 		public bool IsSolutionValid(int solution)
-		{			
+		{
 			if (solution < 1 || solution > 9)
 			{
 				return false;
@@ -187,7 +187,7 @@ namespace Showdoku
 		{
 			return this.Solution.HasValue;
 		}
-		
+
 		private void ResetPencilMarks()
 		{
 			this.pencilMarks.Clear();
