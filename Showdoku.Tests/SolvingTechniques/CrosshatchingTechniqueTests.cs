@@ -37,7 +37,7 @@ namespace Showdoku.SolvingTechniques
 			cut.Apply(grid);
 
 			// Assert			
-			foreach (var cell in grid.GetBlockContainingCell(solvedCell))
+			foreach (Cell cell in grid.GetBlockContainingCell(solvedCell))
 			{
 				cell.PencilMarks.Should().NotContain(8);
 			}
@@ -57,7 +57,7 @@ namespace Showdoku.SolvingTechniques
 			cut.Apply(grid);
 
 			// Assert			
-			foreach (var cell in grid.GetRowContainingCell(solvedCell))
+			foreach (Cell cell in grid.GetRowContainingCell(solvedCell))
 			{
 				cell.PencilMarks.Should().NotContain(8);
 			}
@@ -77,7 +77,7 @@ namespace Showdoku.SolvingTechniques
 			cut.Apply(grid);
 
 			// Assert			
-			foreach (var cell in grid.GetColumnContainingCell(solvedCell))
+			foreach (Cell cell in grid.GetColumnContainingCell(solvedCell))
 			{
 				cell.PencilMarks.Should().NotContain(8);
 			}

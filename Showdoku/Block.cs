@@ -1,6 +1,7 @@
 ﻿using Showdoku.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Showdoku
 {
@@ -134,6 +135,51 @@ namespace Showdoku
 					yield return this.Cells[x, y];
 				}
 			}
+		}
+
+		/// <summary>
+		/// Returns a string representation of the block.
+		/// </summary>
+		public override string ToString()
+		{
+			var builder = new StringBuilder();
+
+			void addLineBreak()
+			{
+				for (int i = 0; i < 11; i++)
+				{
+					builder.Append('—');
+				}
+
+				builder.AppendLine();
+			};
+
+			addLineBreak();
+			
+			for (int y = 0; y < 3; y++)
+			{
+				builder.Append('|');
+
+				for (int x = 0; x < 3; x++)
+				{
+					Cell cell = this.Cells[x, y];
+
+					if (cell.IsSolved())
+					{
+						builder.Append($" {cell.Solution.Value} ");
+					}
+					else
+					{
+						builder.Append("   ");
+					}					
+				}
+
+				builder.AppendLine("|");
+			}			
+
+			addLineBreak();
+
+			return builder.ToString();
 		}
 	}
 }

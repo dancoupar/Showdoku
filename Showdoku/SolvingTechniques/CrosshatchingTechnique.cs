@@ -3,9 +3,9 @@
 namespace Showdoku.SolvingTechniques
 {
 	/// <summary>
-	/// A technique for solving cells within a sudoku grid by eliminating possibilities for
-	/// each cell based on whether those possibilities already appear in the same block, row
-	/// or column that the cell occupies.
+	/// A technique for solving cells within a sudoku grid by eliminating pencil marks for each
+	/// cell based on whether any other cell within the same block, row or column has the penil
+	/// mark as its solution.
 	/// </summary>
 	public class CrosshatchingTechnique : ISolvingTechnique
 	{
@@ -41,12 +41,12 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!cell.IsSolved())
 				{
-					ApplyToCell(grid, cell);
+					Apply(grid, cell);
 				}
 			}
 		}
 
-		private static void ApplyToCell(Grid grid, Cell cell)
+		private static void Apply(Grid grid, Cell cell)
 		{
 			Block containingBlock = grid.GetBlockContainingCell(cell);
 			Row containingRow = grid.GetRowContainingCell(cell);

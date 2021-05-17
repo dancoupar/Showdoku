@@ -5,13 +5,13 @@ using Xunit;
 
 namespace Showdoku.SolvingTechniques
 {
-	public class LockedCandidatesTechniqueTests
+	public class LockedCandidatesPointingTechniqueTests
 	{
 		[Fact]
 		public void Technique_throws_if_no_grid_is_provided()
 		{
 			// Arrange
-			var cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesPointingTechnique();
 
 			// Act
 			Action act = () =>
@@ -39,7 +39,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 4].RemovePencilMark(6);
 			grid.Cells[4, 5].RemovePencilMark(6);
 
-			var cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesPointingTechnique();
 
 			// Act
 			cut.Apply(grid);
@@ -85,7 +85,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 4].RemovePencilMark(6);
 			grid.Cells[5, 4].RemovePencilMark(6);
 
-			LockedCandidatesTechnique cut = new LockedCandidatesTechnique();
+			LockedCandidatesPointingTechnique cut = new LockedCandidatesPointingTechnique();
 
 			// Act
 			cut.Apply(grid);
@@ -127,7 +127,7 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 4].RemovePencilMark(6);
 			grid.Cells[5, 4].RemovePencilMark(6);
 
-			var cut = new LockedCandidatesTechnique();
+			var cut = new LockedCandidatesPointingTechnique();
 
 			// Act
 			cut.Apply(grid);

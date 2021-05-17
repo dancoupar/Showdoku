@@ -1,6 +1,8 @@
 ﻿using Showdoku.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Showdoku
 {
@@ -235,6 +237,37 @@ namespace Showdoku
 			}
 
 			return false;
+		}
+
+		/// <summary>
+		/// Returns a string representation of the cell.
+		/// </summary>
+		public override string ToString()
+		{
+			StringBuilder builder = new StringBuilder();
+
+			if (this.IsSolved())
+			{
+				builder.Append($"[{this.Solution}]");
+			}
+			else
+			{
+				builder.Append("[?] (");
+				
+				for (int i = 0; i < this.pencilMarks.Count; i++)
+				{
+					builder.Append(this.pencilMarks[i]);
+
+					if (i < this.pencilMarks.Count - 1)
+					{
+						builder.Append(',');
+					}
+				}
+
+				builder.Append(')');
+			}
+
+			return builder.ToString();
 		}
 	}
 }

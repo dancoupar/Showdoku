@@ -122,11 +122,12 @@ namespace Showdoku
 		[Fact]
 		public void Hard_grid_1_can_be_solved()
 		{
-			// Arrange			
+			// Arrange
 			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
-				new LockedCandidatesTechnique()
+				new LockedCandidatesPointingTechnique(),
+				new LockedCandidatesClaimingTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithHardGrid_A();
@@ -146,7 +147,7 @@ namespace Showdoku
 			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
-				new LockedCandidatesTechnique()
+				new LockedCandidatesPointingTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithHardGrid_B();
@@ -166,7 +167,7 @@ namespace Showdoku
 			var solver = new Solver(
 				new CrosshatchingTechnique(),
 				new SoleCandidateTechnique(),
-				new LockedCandidatesTechnique()
+				new LockedCandidatesPointingTechnique()
 			);
 
 			Grid grid = new GridBuilder().WithWorldsHardestGrid();

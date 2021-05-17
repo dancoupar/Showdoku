@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Showdoku
 {
@@ -56,6 +57,50 @@ namespace Showdoku
 			{
 				yield return cell;
 			}
+		}
+
+		/// <summary>
+		/// Returns a string representation of the row.
+		/// </summary>
+		public override string ToString()
+		{
+			var builder = new StringBuilder();
+
+			void addLineBreak()
+			{
+				for (int i = 0; i < 31; i++)
+				{
+					builder.Append('—');
+				}
+
+				builder.AppendLine();
+			};
+
+			addLineBreak();			
+
+			for (int x1 = 0; x1 < 3; x1++)
+			{
+				builder.Append('|');
+
+				for (int x2 = 0; x2 < 3; x2++)
+				{
+					Cell cell = this.Cells[x2 + 3 * x1];
+
+					if (cell.IsSolved())
+					{
+						builder.Append($" {cell.Solution.Value} ");
+					}
+					else
+					{
+						builder.Append("   ");
+					}
+				}
+			}
+
+			builder.AppendLine("|");
+			addLineBreak();
+
+			return builder.ToString();
 		}
 	}
 }

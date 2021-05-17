@@ -5,7 +5,7 @@ namespace Showdoku.SolvingTechniques
 {
 	/// <summary>
 	/// A technique for solving cells within a sudoku grid based on whether any cells contain any
-	/// possibilities that are unique within the same block, row or column that the cell occupies.
+	/// penicl marks that are unique within the same block, row or column that the cell occupies.
 	/// </summary>
 	public class SoleCandidateTechnique : ISolvingTechnique
 	{
@@ -41,7 +41,7 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!cell.IsSolved())
 				{
-					if (ApplyToCell(grid, cell))
+					if (Apply(grid, cell))
 					{
 						// This technique stops once it makes progress,
 						// in order for the more basic techniques to be
@@ -53,7 +53,7 @@ namespace Showdoku.SolvingTechniques
 			}
 		}
 
-		private static bool ApplyToCell(Grid grid, Cell cell)
+		private static bool Apply(Grid grid, Cell cell)
 		{
 			Block containingBlock = grid.GetBlockContainingCell(cell);
 			Row containingRow = grid.GetRowContainingCell(cell);

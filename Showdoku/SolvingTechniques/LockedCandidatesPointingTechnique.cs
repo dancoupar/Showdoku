@@ -8,7 +8,7 @@ namespace Showdoku.SolvingTechniques
 	/// A technique for eliminating pencil marks within a soduko grid by identifying pencil marks that
 	/// are restricted to a single row or column.
 	/// </summary>
-	public class LockedCandidatesTechnique : ISolvingTechnique
+	public class LockedCandidatesPointingTechnique : ISolvingTechnique
 	{
 		/// <summary>
 		/// Gets a value indicating whether the solving process should be restarted if this
