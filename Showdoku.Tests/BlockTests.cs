@@ -324,35 +324,29 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Retrieving_x_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
+		public void Retrieving_x_index_of_contained_cell_returns_negative_one_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
 			var grid = new Grid();
 
 			// Act
-			Action act = () =>
-			{
-				grid.Blocks[0, 0].XIndexOf(grid.Cells[4, 4]);
-			};
+			int result = grid.Blocks[0, 0].XIndexOf(grid.Cells[4, 4]);
 
 			// Assert
-			act.Should().Throw<CellNotFoundException>();
+			result.Should().Be(-1);
 		}
 
 		[Fact]
-		public void Retrieving_y_index_of_contained_cell_throws_if_cell_is_not_contained_in_block()
+		public void Retrieving_y_index_of_contained_cell_returns_negative_one_if_cell_is_not_contained_in_block()
 		{
 			// Arrange
 			var grid = new Grid();
 
 			// Act
-			Action act = () =>
-			{
-				grid.Blocks[0, 0].YIndexOf(grid.Cells[4, 4]);
-			};
+			int result = grid.Blocks[0, 0].YIndexOf(grid.Cells[4, 4]);
 
 			// Assert
-			act.Should().Throw<CellNotFoundException>();
+			result.Should().Be(-1);
 		}
 
 		[Fact]

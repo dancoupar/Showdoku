@@ -105,6 +105,204 @@ namespace Showdoku
 		}
 
 		/// <summary>
+		/// Gets the x-index of the specified cell within this grid.
+		/// </summary>
+		/// <param name="cell">
+		/// A cell within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based x-index of the cell within this grid, or -1 if the specified cell does not
+		/// appear within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified cell is null.
+		/// </exception>
+		public int XIndexOf(Cell cell)
+		{
+			if (cell == null)
+			{
+				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
+			}
+
+			for (int y = 0; y < this.Cells.GetLength(1); y++)
+			{
+				for (int x = 0; x < this.Cells.GetLength(0); x++)
+				{
+					if (this.Cells[x, y] == cell)
+					{
+						return x;
+					}
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Gets the y-index of the specified cell within this grid.
+		/// </summary>
+		/// <param name="cell">
+		/// A cell within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based y-index of the cell within this grid, or -1 if the specified cell does not
+		/// appear within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified cell is null.
+		/// </exception>
+		public int YIndexOf(Cell cell)
+		{
+			if (cell == null)
+			{
+				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
+			}
+
+			for (int y = 0; y < this.Cells.GetLength(1); y++)
+			{
+				for (int x = 0; x < this.Cells.GetLength(0); x++)
+				{
+					if (this.Cells[x, y] == cell)
+					{
+						return y;
+					}
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Gets the x-index of the specified block within this grid.
+		/// </summary>
+		/// <param name="block">
+		/// A block within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based x-index of the block within this grid, or -1 if the specified block does not
+		/// appear within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified block is null.
+		/// </exception>
+		public int XIndexOf(Block block)
+		{
+			if (block == null)
+			{
+				throw new ArgumentNullException(nameof(block), "Argument cannot be null.");
+			}
+
+			for (int y = 0; y < this.Blocks.GetLength(1); y++)
+			{
+				for (int x = 0; x < this.Blocks.GetLength(0); x++)
+				{
+					if (this.Blocks[x, y] == block)
+					{
+						return x;
+					}
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Gets the y-index of the specified block within this grid.
+		/// </summary>
+		/// <param name="block">
+		/// A block within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based y-index of the block within this grid, or -1 if the specified block does not
+		/// appear within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified block is null.
+		/// </exception>
+		public int YIndexOf(Block block)
+		{
+			if (block == null)
+			{
+				throw new ArgumentNullException(nameof(block), "Argument cannot be null.");
+			}
+
+			for (int y = 0; y < this.Blocks.GetLength(1); y++)
+			{
+				for (int x = 0; x < this.Blocks.GetLength(0); x++)
+				{
+					if (this.Blocks[x, y] == block)
+					{
+						return y;
+					}
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Gets the index of the specified row within this grid.
+		/// </summary>
+		/// <param name="row">
+		/// A row within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based index of the row within this grid, or -1 if the specified row does not appear
+		/// within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified row is null.
+		/// </exception>
+		public int IndexOf(Row row)
+		{
+			if (row == null)
+			{
+				throw new ArgumentNullException(nameof(row), "Argument cannot be null.");
+			}
+
+			for (int y = 0; y < this.Rows.Length; y++)
+			{
+				if (this.Rows[y] == row)
+				{
+					return y;
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Gets the index of the specified column within this grid.
+		/// </summary>
+		/// <param name="column">
+		/// A column within this grid.
+		/// </param>
+		/// <returns>
+		/// The zero-based index of the column within this grid, or -1 if the specified column does not
+		/// appear within this grid.
+		/// </returns>
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if the specified column is null.
+		/// </exception>
+		public int IndexOf(Column column)
+		{
+			if (column == null)
+			{
+				throw new ArgumentNullException(nameof(column), "Argument cannot be null.");
+			}
+
+			for (int x = 0; x < this.Columns.Length; x++)
+			{
+				if (this.Columns[x] == column)
+				{
+					return x;
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
 		/// Gets the block which contains the specified cell.
 		/// </summary>
 		/// <param name="cell">

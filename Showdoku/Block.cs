@@ -55,14 +55,12 @@ namespace Showdoku
 		/// A cell within this block.
 		/// </param>
 		/// <returns>
-		/// The zero-based x-index of the cell within this block.
+		/// The zero-based x-index of the cell within this block, or -1 if the specified cell does
+		/// not appear within this block.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
 		/// Thrown if the specified cell is null.
-		/// </exception>
-		/// <exception cref="CellNotFoundException">
-		/// Thrown if the specified cell does not appear within this block.
-		/// </exception>
+		/// </exception>		
 		public int XIndexOf(Cell cell)
 		{
 			if (cell == null)
@@ -70,9 +68,9 @@ namespace Showdoku
 				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
 			}
 
-			for (int y = 0; y < 3; y++)
+			for (int y = 0; y < this.Cells.GetLength(1); y++)
 			{
-				for (int x = 0; x < 3; x++)
+				for (int x = 0; x < this.Cells.GetLength(0); x++)
 				{
 					if (this.Cells[x, y] == cell)
 					{
@@ -81,7 +79,7 @@ namespace Showdoku
 				}
 			}
 
-			throw new CellNotFoundException($"The specified cell does not appear within this block.");
+			return -1;
 		}
 
 		/// <summary>
@@ -91,7 +89,8 @@ namespace Showdoku
 		/// A cell within this block.
 		/// </param>
 		/// <returns>
-		/// The zero-based y-index of the cell within this block.
+		/// The zero-based y-index of the cell within this block, or -1 if the specified cell does not
+		/// appear within this block.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
 		/// Thrown if the specified cell is null.
@@ -106,9 +105,9 @@ namespace Showdoku
 				throw new ArgumentNullException(nameof(cell), "Argument cannot be null.");
 			}
 
-			for (int y = 0; y < 3; y++)
+			for (int y = 0; y < this.Cells.GetLength(1); y++)
 			{
-				for (int x = 0; x < 3; x++)
+				for (int x = 0; x < this.Cells.GetLength(0); x++)
 				{
 					if (this.Cells[x, y] == cell)
 					{
@@ -117,7 +116,7 @@ namespace Showdoku
 				}
 			}
 
-			throw new CellNotFoundException($"The specified cell does not appear within this block.");
+			return -1;
 		}
 
 		/// <summary>
