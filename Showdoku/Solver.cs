@@ -52,7 +52,7 @@ namespace Showdoku
 			bool progressMade;
 			do
 			{
-				int startingPenilMarkCount = grid.GetPencilMarkCount();
+				int startingPenilMarkCount = grid.CountPencilMarks();
 				this.ApplyTechniques(grid);
 				progressMade = ProgressMade(grid, startingPenilMarkCount);
 			}
@@ -79,7 +79,7 @@ namespace Showdoku
 				bool progressMade;
 				do
 				{
-					int startingPencilMarkCount = grid.GetPencilMarkCount();
+					int startingPencilMarkCount = grid.CountPencilMarks();
 					technique.Apply(grid);
 					progressMade = ProgressMade(grid, startingPencilMarkCount);
 
@@ -94,7 +94,7 @@ namespace Showdoku
 
 		private static bool ProgressMade(Grid grid, int startingPencilMarkCount)
 		{
-			return grid.GetPencilMarkCount() < startingPencilMarkCount;
+			return grid.CountPencilMarks() < startingPencilMarkCount;
 		}
 	}
 }

@@ -70,7 +70,7 @@ namespace Showdoku.SolvingTechniques
 			{
 				if (!block.Contains(cell))
 				{
-					cell.RemovePencilMark(pencilMark);
+					cell.ErasePencilMark(pencilMark);
 				}
 			}
 		}

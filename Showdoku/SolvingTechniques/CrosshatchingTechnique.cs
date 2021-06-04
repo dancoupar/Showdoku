@@ -57,7 +57,7 @@ namespace Showdoku.SolvingTechniques
 				if (blockCell.IsSolved())
 				{
 					// Number appears elsewhere in same block
-					cell.RemovePencilMark(blockCell.Solution.Value);
+					cell.ErasePencilMark(blockCell.Solution.Value);
 
 					if (cell.IsSolved())
 					{
@@ -71,7 +71,7 @@ namespace Showdoku.SolvingTechniques
 				if (rowCell.IsSolved())
 				{
 					// Number appears elsewhere in same row
-					cell.RemovePencilMark(rowCell.Solution.Value);
+					cell.ErasePencilMark(rowCell.Solution.Value);
 
 					if (cell.IsSolved())
 					{
@@ -85,7 +85,7 @@ namespace Showdoku.SolvingTechniques
 				if (columnCell.IsSolved())
 				{
 					// Number appears elsewhere in same column
-					cell.RemovePencilMark(columnCell.Solution.Value);
+					cell.ErasePencilMark(columnCell.Solution.Value);
 
 					if (cell.IsSolved())
 					{

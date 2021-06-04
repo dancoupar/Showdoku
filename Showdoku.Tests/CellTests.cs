@@ -270,7 +270,7 @@ namespace Showdoku
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
-			cell.RemovePencilMark(1);
+			cell.ErasePencilMark(1);
 
 			Action act = () =>
 			{
@@ -307,7 +307,7 @@ namespace Showdoku
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
-			cell.RemovePencilMark(5);
+			cell.ErasePencilMark(5);
 
 			// Assert
 			cell.PencilMarks.Should().NotContain(5);
@@ -321,8 +321,8 @@ namespace Showdoku
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
-			cell.RemovePencilMark(5);
-			cell.RemovePencilMark(5);
+			cell.ErasePencilMark(5);
+			cell.ErasePencilMark(5);
 
 			// Assert
 			cell.PencilMarks.Count.Should().Be(8);
@@ -338,7 +338,7 @@ namespace Showdoku
 			// Act
 			Action act = () =>
 			{
-				cell.RemovePencilMark(0);
+				cell.ErasePencilMark(0);
 			};
 
 			// Assert
@@ -355,7 +355,7 @@ namespace Showdoku
 			// Act
 			Action act = () =>
 			{
-				cell.RemovePencilMark(10);
+				cell.ErasePencilMark(10);
 			};
 
 			// Assert
@@ -380,7 +380,7 @@ namespace Showdoku
 			// Act
 			Action act = () =>
 			{
-				cell.RemovePencilMark(pencilMark);
+				cell.ErasePencilMark(pencilMark);
 			};
 
 			// Assert
@@ -395,14 +395,14 @@ namespace Showdoku
 			Cell cell = grid.Cells[0, 0];
 
 			// Act
-			cell.RemovePencilMark(1);
-			cell.RemovePencilMark(2);
-			cell.RemovePencilMark(3);
-			cell.RemovePencilMark(4);
-			cell.RemovePencilMark(5);
-			cell.RemovePencilMark(6);
-			cell.RemovePencilMark(7);
-			cell.RemovePencilMark(8);
+			cell.ErasePencilMark(1);
+			cell.ErasePencilMark(2);
+			cell.ErasePencilMark(3);
+			cell.ErasePencilMark(4);
+			cell.ErasePencilMark(5);
+			cell.ErasePencilMark(6);
+			cell.ErasePencilMark(7);
+			cell.ErasePencilMark(8);
 
 			// Assert
 			cell.IsSolved().Should().BeTrue();
@@ -421,7 +421,7 @@ namespace Showdoku
 
 			Action act = () =>
 			{
-				cell.RemovePencilMark(7);
+				cell.ErasePencilMark(7);
 			};
 
 			// Assert

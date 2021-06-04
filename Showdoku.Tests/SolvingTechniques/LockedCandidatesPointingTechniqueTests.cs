@@ -35,9 +35,9 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[3, 5].Solve(3);
 			grid.Cells[5, 5].Solve(4);
 
-			grid.Cells[4, 3].RemovePencilMark(6);
-			grid.Cells[4, 4].RemovePencilMark(6);
-			grid.Cells[4, 5].RemovePencilMark(6);
+			grid.Cells[4, 3].ErasePencilMark(6);
+			grid.Cells[4, 4].ErasePencilMark(6);
+			grid.Cells[4, 5].ErasePencilMark(6);
 
 			var cut = new LockedCandidatesPointingTechnique();
 
@@ -66,24 +66,24 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[4, 5].Solve(5);
 			grid.Cells[5, 5].Solve(6);
 
-			grid.Cells[3, 4].RemovePencilMark(1);
-			grid.Cells[4, 4].RemovePencilMark(1);
-			grid.Cells[5, 4].RemovePencilMark(1);
-			grid.Cells[3, 4].RemovePencilMark(2);
-			grid.Cells[4, 4].RemovePencilMark(2);
-			grid.Cells[5, 4].RemovePencilMark(2);
-			grid.Cells[3, 4].RemovePencilMark(3);
-			grid.Cells[4, 4].RemovePencilMark(3);
-			grid.Cells[5, 4].RemovePencilMark(3);
-			grid.Cells[3, 4].RemovePencilMark(4);
-			grid.Cells[4, 4].RemovePencilMark(4);
-			grid.Cells[5, 4].RemovePencilMark(4);
-			grid.Cells[3, 4].RemovePencilMark(5);
-			grid.Cells[4, 4].RemovePencilMark(5);
-			grid.Cells[5, 4].RemovePencilMark(5);
-			grid.Cells[3, 4].RemovePencilMark(6);
-			grid.Cells[4, 4].RemovePencilMark(6);
-			grid.Cells[5, 4].RemovePencilMark(6);
+			grid.Cells[3, 4].ErasePencilMark(1);
+			grid.Cells[4, 4].ErasePencilMark(1);
+			grid.Cells[5, 4].ErasePencilMark(1);
+			grid.Cells[3, 4].ErasePencilMark(2);
+			grid.Cells[4, 4].ErasePencilMark(2);
+			grid.Cells[5, 4].ErasePencilMark(2);
+			grid.Cells[3, 4].ErasePencilMark(3);
+			grid.Cells[4, 4].ErasePencilMark(3);
+			grid.Cells[5, 4].ErasePencilMark(3);
+			grid.Cells[3, 4].ErasePencilMark(4);
+			grid.Cells[4, 4].ErasePencilMark(4);
+			grid.Cells[5, 4].ErasePencilMark(4);
+			grid.Cells[3, 4].ErasePencilMark(5);
+			grid.Cells[4, 4].ErasePencilMark(5);
+			grid.Cells[5, 4].ErasePencilMark(5);
+			grid.Cells[3, 4].ErasePencilMark(6);
+			grid.Cells[4, 4].ErasePencilMark(6);
+			grid.Cells[5, 4].ErasePencilMark(6);
 
 			LockedCandidatesPointingTechnique cut = new LockedCandidatesPointingTechnique();
 
@@ -123,9 +123,9 @@ namespace Showdoku.SolvingTechniques
 			grid.Cells[3, 5].Solve(3);
 			grid.Cells[5, 5].Solve(4);
 
-			grid.Cells[3, 4].RemovePencilMark(6);
-			grid.Cells[4, 4].RemovePencilMark(6);
-			grid.Cells[5, 4].RemovePencilMark(6);
+			grid.Cells[3, 4].ErasePencilMark(6);
+			grid.Cells[4, 4].ErasePencilMark(6);
+			grid.Cells[5, 4].ErasePencilMark(6);
 
 			var cut = new LockedCandidatesPointingTechnique();
 

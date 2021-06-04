@@ -43,13 +43,13 @@ namespace Showdoku.SolvingTechniques
 			// Eliminate some pencil marks from block 0,2 using basic scanning; a 4 appears
 			// elsewhere outside the block in columns 1 and 2 and in row 8.
 
-			grid.Cells[1, 6].RemovePencilMark(4);
-			grid.Cells[2, 6].RemovePencilMark(4);
-			grid.Cells[1, 7].RemovePencilMark(4);
-			grid.Cells[2, 7].RemovePencilMark(4);
-			grid.Cells[0, 8].RemovePencilMark(4);
-			grid.Cells[1, 8].RemovePencilMark(4);
-			grid.Cells[2, 8].RemovePencilMark(4);
+			grid.Cells[1, 6].ErasePencilMark(4);
+			grid.Cells[2, 6].ErasePencilMark(4);
+			grid.Cells[1, 7].ErasePencilMark(4);
+			grid.Cells[2, 7].ErasePencilMark(4);
+			grid.Cells[0, 8].ErasePencilMark(4);
+			grid.Cells[1, 8].ErasePencilMark(4);
+			grid.Cells[2, 8].ErasePencilMark(4);
 
 			var cut = new SoleCandidateTechnique();
 
@@ -85,8 +85,8 @@ namespace Showdoku.SolvingTechniques
 			// Eliminate some pencil marks from block 1,0 using basic scanning; a 6 appears
 			// elsewhere outside the block in columns 3 and 5.
 
-			grid.Cells[3, 0].RemovePencilMark(6);
-			grid.Cells[5, 0].RemovePencilMark(6);
+			grid.Cells[3, 0].ErasePencilMark(6);
+			grid.Cells[5, 0].ErasePencilMark(6);
 
 			var cut = new SoleCandidateTechnique();
 
@@ -124,10 +124,10 @@ namespace Showdoku.SolvingTechniques
 			// outside the block in rows 3 and 5. In block 1,2, a 5 appears elsewhere outside the
 			// block in row 7.
 
-			grid.Cells[4, 1].RemovePencilMark(5);
-			grid.Cells[4, 3].RemovePencilMark(5);
-			grid.Cells[4, 5].RemovePencilMark(5);
-			grid.Cells[4, 7].RemovePencilMark(5);
+			grid.Cells[4, 1].ErasePencilMark(5);
+			grid.Cells[4, 3].ErasePencilMark(5);
+			grid.Cells[4, 5].ErasePencilMark(5);
+			grid.Cells[4, 7].ErasePencilMark(5);
 
 			var cut = new SoleCandidateTechnique();
 

@@ -59,7 +59,7 @@ namespace Showdoku.SolvingTechniques
 						{
 							if (!cell.IsSolved())
 							{
-								cell.RemovePencilMark(solution);
+								cell.ErasePencilMark(solution);
 							}
 						}
 					}

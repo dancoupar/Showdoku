@@ -62,7 +62,7 @@ namespace Showdoku
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// Thrown if the specified solution is not a number between 1 and 9 (inclusive).
 		/// </exception>
-		public void RemovePencilMark(int pencilMark)
+		public void ErasePencilMark(int pencilMark)
 		{
 			if (this.IsSolved())
 			{

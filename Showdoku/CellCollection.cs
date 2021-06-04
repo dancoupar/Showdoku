@@ -28,7 +28,7 @@ namespace Showdoku
 		/// <returns>
 		/// The total number of solved cells.
 		/// </returns>
-		public int GetSolvedCellCount()
+		public int CountSolvedCells()
 		{
 			return this.Count((c) => c.IsSolved());
 		}
@@ -40,7 +40,7 @@ namespace Showdoku
 		/// <returns>
 		/// The total number of pencil marks.
 		/// </returns>
-		public int GetPencilMarkCount()
+		public int CountPencilMarks()
 		{
 			return this.Sum((c) => c.PencilMarks.Count);
 		}
