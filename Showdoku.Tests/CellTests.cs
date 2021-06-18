@@ -2,6 +2,7 @@ using FluentAssertions;
 using Showdoku.Exceptions;
 using Showdoku.Setup;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace Showdoku
@@ -16,7 +17,7 @@ namespace Showdoku
 			var cell = new Cell(new Grid());
 
 			// Assert
-			cell.PencilMarks.Count.Should().Be(9);
+			cell.PencilMarks.Count().Should().Be(9);
 
 			cell.PencilMarks.Should().Contain(1);
 			cell.PencilMarks.Should().Contain(2);
@@ -40,7 +41,7 @@ namespace Showdoku
 			cell.Solve(1);
 
 			// Assert
-			cell.PencilMarks.Count.Should().Be(0);
+			cell.PencilMarks.Count().Should().Be(0);
 		}
 
 		[Fact]
@@ -300,7 +301,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Removing_a_pencil_mark_removes_it_from_the_list_of_pencil_marks()
+		public void Erasing_a_pencil_mark_removes_it_from_the_set_of_pencil_marks()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -314,7 +315,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Removing_an_already_removed_pencil_mark_has_no_effect_on_the_list_of_pencil_marks()
+		public void Erasing_an_already_erased_pencil_mark_has_no_effect_on_the_set_of_pencil_marks()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -325,11 +326,11 @@ namespace Showdoku
 			cell.ErasePencilMark(5);
 
 			// Assert
-			cell.PencilMarks.Count.Should().Be(8);
+			cell.PencilMarks.Count().Should().Be(8);
 		}
 
 		[Fact]
-		public void Removing_a_pencil_mark_throws_if_the_specified_value_is_less_than_one()
+		public void Erasing_a_pencil_mark_throws_if_the_specified_value_is_less_than_one()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -346,7 +347,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Removing_a_pencil_mark_throws_if_the_specified_value_is_more_than_nine()
+		public void Erasing_a_pencil_mark_throws_if_the_specified_value_is_more_than_nine()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -371,7 +372,7 @@ namespace Showdoku
 		[InlineData(6)]
 		[InlineData(8)]
 		[InlineData(9)]
-		public void Removing_a_pencil_mark_between_one_and_nine_throws(int pencilMark)
+		public void Erasing_a_pencil_mark_between_one_and_nine_throws(int pencilMark)
 		{
 			// Arrange
 			var grid = new Grid();
@@ -388,7 +389,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Removing_all_but_one_pencil_mark_solves_the_cell()
+		public void Erasing_all_but_one_pencil_mark_solves_the_cell()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -410,7 +411,7 @@ namespace Showdoku
 		}
 
 		[Fact]
-		public void Removing_a_pencil_mark_on_an_already_solved_cell_throws()
+		public void Erasing_a_pencil_mark_on_an_already_solved_cell_throws()
 		{
 			// Arrange
 			var grid = new Grid();
@@ -455,7 +456,7 @@ namespace Showdoku
 			cell.Empty();
 
 			// Assert
-			cell.PencilMarks.Count.Should().Be(9);
+			cell.PencilMarks.Count().Should().Be(9);
 		}
 	}
 }

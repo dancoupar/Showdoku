@@ -42,7 +42,7 @@ namespace Showdoku
 		/// </returns>
 		public int CountPencilMarks()
 		{
-			return this.Sum((c) => c.PencilMarks.Count);
+			return this.Sum((c) => c.PencilMarks.Count());
 		}
 
 		/// <summary>

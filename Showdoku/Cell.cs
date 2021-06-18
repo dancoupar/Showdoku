@@ -1,6 +1,5 @@
 ﻿using Showdoku.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -12,7 +11,7 @@ namespace Showdoku
 	public class Cell
 	{
 		private readonly Grid grid;
-		private readonly List<int> pencilMarks;
+		private readonly PencilMarkSet pencilMarks;
 
 		/// <summary>
 		/// Creates a new cell to be contained in the specified sudoku grid.
@@ -26,8 +25,7 @@ namespace Showdoku
 		public Cell(Grid grid)
 		{
 			this.grid = grid ?? throw new ArgumentNullException(nameof(grid), "Argument cannot be null.");
-			this.pencilMarks = new List<int>();
-			this.ResetPencilMarks();
+			this.pencilMarks = new PencilMarkSet();
 		}
 
 		/// <summary>
@@ -40,13 +38,13 @@ namespace Showdoku
 		}
 
 		/// <summary>
-		/// Gets a collection of possible solutions for this cell.
+		/// Gets a set of possible solutions for this cell.
 		/// </summary>
-		public IReadOnlyCollection<int> PencilMarks
+		public PencilMarkSet PencilMarks
 		{
 			get
 			{
-				return this.pencilMarks.AsReadOnly();
+				return this.pencilMarks;
 			}
 		}
 
@@ -60,7 +58,7 @@ namespace Showdoku
 		/// Thrown if this cell has already been solved.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		/// Thrown if the specified solution is not a number between 1 and 9 (inclusive).
+		/// Thrown if the specified pencil mark is not a number between 1 and 9 (inclusive).
 		/// </exception>
 		public void ErasePencilMark(int pencilMark)
 		{
@@ -69,16 +67,12 @@ namespace Showdoku
 				throw new AlreadySolvedException("This cell has already been solved.");
 			}
 
-			if (pencilMark < 1 || pencilMark > 9)
+			this.pencilMarks.Erase(pencilMark);
+			
+			if (this.pencilMarks.Count() == 1)
 			{
-				throw new ArgumentOutOfRangeException(nameof(pencilMark), pencilMark, "Argument must not be less than 1 or greater than 9.");
-			}
-
-			this.pencilMarks.Remove(pencilMark);
-
-			if (this.pencilMarks.Count == 1)
-			{
-				this.Solve(this.pencilMarks[0]);
+				// Only one possibility remains
+				this.Solve(this.pencilMarks.ElementAt(0));
 			}
 		}
 
@@ -167,7 +161,7 @@ namespace Showdoku
 			}
 
 			this.Solution = solution;
-			this.pencilMarks.Clear();
+			this.pencilMarks.EraseAll();
 		}
 
 		/// <summary>
@@ -176,7 +170,7 @@ namespace Showdoku
 		public void Empty()
 		{
 			this.Solution = null;
-			this.ResetPencilMarks();
+			this.pencilMarks.Reset();
 		}
 
 		/// <summary>
@@ -188,17 +182,7 @@ namespace Showdoku
 		public bool IsSolved()
 		{
 			return this.Solution.HasValue;
-		}
-
-		private void ResetPencilMarks()
-		{
-			this.pencilMarks.Clear();
-
-			for (int i = 1; i < 10; i++)
-			{
-				this.pencilMarks.Add(i);
-			}
-		}
+		}		
 
 		private bool IsNumberAlreadyInBlock(int number)
 		{
@@ -254,11 +238,11 @@ namespace Showdoku
 			{
 				builder.Append("[?] (");
 				
-				for (int i = 0; i < this.pencilMarks.Count; i++)
+				for (int i = 0; i < this.pencilMarks.Count(); i++)
 				{
-					builder.Append(this.pencilMarks[i]);
+					builder.Append(this.pencilMarks.ElementAt(i));
 
-					if (i < this.pencilMarks.Count - 1)
+					if (i < this.pencilMarks.Count() - 1)
 					{
 						builder.Append(',');
 					}

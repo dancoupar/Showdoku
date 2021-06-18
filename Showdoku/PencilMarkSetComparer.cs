@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Showdoku
@@ -8,7 +7,7 @@ namespace Showdoku
 	/// <summary>
 	/// A comparer for comparing two sets of pencil marks to determine whether they're the same.
 	/// </summary>
-	public class PencilMarksComparer : IEqualityComparer<IEnumerable<int>>
+	public class PencilMarkSetComparer : IEqualityComparer<PencilMarkSet>
 	{
 		/// <summary>
 		/// Returns a value indicating whether the two specified sets of pencil marks are the same.
@@ -22,7 +21,7 @@ namespace Showdoku
 		/// <returns>
 		/// True if the two sets of pencil marks are the same, otherwise false.
 		/// </returns>
-		public bool Equals(IEnumerable<int> first, IEnumerable<int> second)
+		public bool Equals(PencilMarkSet first, PencilMarkSet second)
 		{
 			if (Object.ReferenceEquals(first, second))
 			{
@@ -65,7 +64,7 @@ namespace Showdoku
 		/// same hashcode. Technically, this on its own is enough for comparison, but the Equals
 		/// method is also implemented for completeness and readability.
 		/// </remarks>
-		public int GetHashCode(IEnumerable<int> pencilMarks)
+		public int GetHashCode(PencilMarkSet pencilMarks)
 		{
 			if (pencilMarks == null)
 			{
