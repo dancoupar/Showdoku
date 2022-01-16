@@ -127,7 +127,7 @@ namespace Showdoku
 		{
 			// Arrange
 			// Act
-			Grid grid = new Grid();
+			var grid = new Grid();
 
 			// Assert
 			foreach (Block block in grid.Blocks)

@@ -228,7 +228,7 @@ namespace Showdoku
 		/// </summary>
 		public override string ToString()
 		{
-			StringBuilder builder = new StringBuilder();
+			var builder = new StringBuilder();
 
 			if (this.IsSolved())
 			{
